@@ -3,7 +3,7 @@
     <LI class="submenu">DC² Backends
       <UL id="dcbackends" class="submenu hidden">
         <% @dcblist.each do |dcb| %>
-          <LI><%= link_to dcb.title, :controller => "backends/main", :action => "list", :id => @dcb %></LI>
+          <LI><%= link_to dcb.title, :controller => "backends/main", :action => "list", :id => dcb %></LI>
         <% end %>
       </UL>
     </LI>

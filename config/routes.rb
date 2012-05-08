@@ -15,11 +15,9 @@ Dc2Admin::Application.routes.draw do
   match "/login" => "sessions#new"
   match "/logout" => "sessions#destroy"
 
-  resources :backends
-  match "/backends/(/:backend_id)/servers/(/:server_action)" => "backends#servers"
-
   namespace :backends do
-    resources :servers
+    resources :main
+    # resources :servers
   end
 
 end

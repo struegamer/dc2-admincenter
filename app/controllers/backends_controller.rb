@@ -6,7 +6,4 @@ class BackendsController < ApplicationController
     @dcblist = Dcbackend.all
     @dcb = Dcbackend.first(:id => params[:id])
   end
-
-  def servers
-  end
 end

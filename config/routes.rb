@@ -18,4 +18,8 @@ Dc2Admin::Application.routes.draw do
   resources :backends
   match "/backends/(/:backend_id)/servers/(/:server_action)" => "backends#servers"
 
+  namespace :backends do
+    resources :servers
+  end
+
 end

@@ -1,0 +1,267 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+* {
+        margin:0;
+        padding:0;
+}
+
+.page {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size:10pt;
+        width:1024px;
+        margin:0 auto;
+}
+
+.clear-all {
+        clear:both;
+}
+
+*.border {
+        border:1px solid #fff;
+}
+
+.l_header {
+        height:80px;
+}
+
+.menubar {
+        float:right;
+        margin-top:10px;
+}
+
+.information {
+        float:right;
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        border-radius:5px;
+}
+* {
+        margin:0;
+        padding:0;
+}
+
+.page {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size:10pt;
+        width:1024px;
+        margin:0 auto;
+}
+
+.clear-all {
+        clear:both;
+}
+
+*.border {
+        border:1px solid #fff;
+}
+
+.l_header {
+        height:80px;
+}
+
+.menubar {
+        float:right;
+        margin-top:10px;
+}
+
+.information {
+        float:right;
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        border-top-left-radius:5px;
+        border-top-right-radius:5px;
+        border-bottom-left-radius:0px;
+        border-bottom-right-radius:0px;
+}
+.information .breadcrumb {
+        float:left;
+        padding-left:5px;
+        font-weight:bold;
+}
+
+.information .title {
+  display:inline;
+  margin-left:10px;
+  float:left;
+  font-weight:bold;
+  padding:10px;
+}
+.information .realname {
+        float:right;
+        display:inline;
+        margin-right:10px;
+        font-weight:bold;
+        padding:10px;
+}
+
+.form {
+        width:512px;
+        margin:0 auto;
+}
+
+.form .button_row {
+        float:right;
+        padding:10px;
+}
+
+.form .input_row {
+        padding:5px;
+}
+.input_label {
+}
+
+.form_label {
+        font-weight:bold;
+        font-size:10pt;
+}
+
+.form_input {
+        width:90%;
+}
+
+UL.horizontal {
+        list-style:none;
+        margin-right:20px;
+}
+
+
+UL.horizontal LI {
+        display:inline;
+        float:left;
+        padding-right:10px;
+}
+
+UL.horizontal LI A {
+        display:block;
+        float:left;
+        text-decoration:underline;
+        font-weight:bold;
+        padding:10px;
+        border-radius:5px;
+}
+
+
+.sidebox {
+  float:left;
+  width:200px;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:5px;
+}
+
+.content_area {
+  float:left;
+  width:820px;
+  margin-top:10px;
+}
+
+
+.content_area .content_list {
+  width:500px;
+  margin:0 auto;
+}
+
+.buttonbar {
+  padding:10px;
+}
+
+.buttonbar .button {
+  float: right;
+}
+
+.content_list .buttonbar {
+  width:100%;
+}
+
+.content_list TABLE {
+  width:100%;
+  border:1px solid #fff;
+}
+
+.content_list TABLE TH {
+  text-align:left;
+}
+
+.content_list TABLE THEAD TR TH {
+  border-bottom:1px solid #fff;
+  padding:5px;
+}
+
+.content_list table tbody tr td {
+  padding:5px;
+}
+
+UL.vertical {
+        list-style:none;
+        margin-left:10px;
+        margin-right:10px;
+}
+
+UL.vertical LI {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-decoration:none;
+        font-weight:bold;
+        font-size:11pt;
+}
+
+UL.vertical LI.submenu {
+  cursor:pointer;
+  text-decoration:underline;
+}
+UL.vertical LI A {
+        display:block;
+        text-decoration:underline;
+        font-weight:bold;
+        border-radius:5px;
+        padding:5px;
+}
+
+UL.vertical LI.submenu UL.submenu {
+  list-style:none;
+  margin-left:10px;
+}
+
+UL.vertical LI.submenu UL.submenu LI {
+  font-size:10pt;
+}
+
+UL.vertical LI.submenu UL.submenu LI A {
+  display:block;
+  text-decoration:underline;
+  font-weight:bold;
+}
+
+.content_menu {
+  width:50%;
+  margin:0 auto;
+}
+
+.content_menu UL {
+  list-style:none;
+}
+
+.content_menu UL LI {
+  display:inline;
+  float:left;
+  padding:5px;
+  font-weight:bold;
+}
+
+.content_menu UL LI A {
+  text-decoration:underline;
+  display:block;
+}

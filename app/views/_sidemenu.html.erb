@@ -1,0 +1,19 @@
+<div id="sidemenu" class="sidebox">
+  <UL class="vertical">
+    <LI class="submenu">DC² Backends
+      <UL id="dcbackends" class="submenu hidden">
+        <% @dcblist.each do |dcb| %>
+          <LI><%= link_to dcb.title, backend_path(dcb) %></LI>
+        <% end %>
+      </UL>
+    </LI>
+    <LI class="submenu">Servers
+      <UL id="servers" class="submenu hidden">
+        <LI><a href="#">Foo</a></LI>
+        <LI><a href="#">Foo1</a></LI>
+      </UL>
+    </LI>
+
+  </UL>
+</div>
+

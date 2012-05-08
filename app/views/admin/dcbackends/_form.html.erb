@@ -1,0 +1,20 @@
+<div class="form">
+  <%= form_for [:admin, @dcbackend] do |f| %>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :title, "Title", :class=>"form_label" %></div>
+    <div class="input_field"><%= f.text_field :title, :class=>"form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :url, "RPC Url",:class => "form_label"%></div>
+    <div class="input_field"><%= f.url_field :url, :class=>"form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :location,"DC Location",:class=>"form_label"%></div>
+    <div class="input_field"><%= f.text_field :location, :class => "form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_field"><%= f.submit :class=>"button" %> </div>
+  </div>
+
+  <% end %>
+</div>

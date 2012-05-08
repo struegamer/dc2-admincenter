@@ -1,0 +1,16 @@
+<%= render "/sidemenu" %>
+<% content_for :titleinformation do %>
+  Server <%= @dcb.title %> Management
+<% end %>
+
+<div id="server_<%= @dcb.id %>" class="content_area">
+  <div id="server_management_buttons" class="content_menu">
+    <UL>
+      <LI><input type="button" class="button" id="server_<%= @dcb.id %>" value="Server"/></li>
+      <li><input type="button" class="button" id="hosts_<%= @dcb.id %>" value="Hosts"/></LI>
+      <LI><input type="button" class="button" id="installstate_<%= @dcb.id %>" value="Install State"/></li>
+    </UL>
+  </div>
+  <div id="server_management" class="content_list">
+  </div>
+</div>

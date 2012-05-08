@@ -1,0 +1,31 @@
+<div class="form">
+  <%= form_for [:admin, @user] do |f| %>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :username, "Username", :class=>"form_label" %></div>
+    <% if @user.username == "" %>
+      <div class="input_field"><%= f.text_field :username, :class => "form_input" %></div>
+    <% else %>
+      <div class="input_field"><%= f.text_field :username, :class => "form_input", :readonly => true , :disabled=>true%></div>
+    <% end %>
+  </div>
+  <div class="input_row">
+    <div class="input label"><%= f.label :password,"Password", :class=>"form_label" %></div>
+    <div class="input_field"><%= f.password_field :password, :class => "form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :firstame,"Firstname", :class => "form_label" %></div>
+    <div class="input_field"><%= f.text_field :firstname, :class => "form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :lastname, "Lastname", :class => "form_label" %></div>
+    <div class="input_field"><%= f.text_field :lastname, :class => "form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_label"><%= f.label :is_admin,"Admin Rights", :class => "form_label" %></div>
+    <div class="input_field"><%= f.check_box :is_admin, :class => "form_input" %></div>
+  </div>
+  <div class="input_row">
+    <div class="input_field"><%= f.submit :class=>"button" %> </div>
+  </div>
+<% end %>
+</div>

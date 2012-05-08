@@ -1,0 +1,5 @@
+<% if logged_in? -%>
+<div class="realname"><%= get_user("name") -%> (<%= get_user("username") -%>)</div>
+<% else -%>
+<div class="realname">Anonymous</div>
+<% end -%>

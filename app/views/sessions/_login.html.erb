@@ -1,0 +1,16 @@
+<div id="user_login" class="form">
+        <%= form_tag sessions_path do -%>
+        <div class="input_row">
+                <div class="input_label"><%= label_tag "username","Username", :class => "form_label" %></div>
+                <div class="input_field"><%= text_field_tag 'username', params[:username] , :class => "form_input" %></div>
+        </div>
+        <div class="input_row">
+                <div class="input_label"><%= label_tag "password","Password", :class=>"form_label" %></div>
+                <div class="input_field"><%= password_field_tag 'password',params[:password], :class => "form_input"%></div>
+        </div>
+        <div class="button_row">
+                <%= submit_tag "Login", :class => "button"%>
+        </div>
+        <% end %>
+</div>
+

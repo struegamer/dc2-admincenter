@@ -1,0 +1,11 @@
+<UL class="horizontal">
+  <% if not logged_in? -%>
+  <LI><%= link_to "Login", "/login" %></LI>
+  <% else -%>
+  <LI><%= link_to "Logout","/logout" %></LI>
+  <% end -%>
+  <% if logged_in? && is_admin? %>
+    <LI><%= link_to "Administration", admin_path -%></LI>
+  <% end %>
+  <LI><%= link_to "Home", "/" -%></LI>
+</UL>

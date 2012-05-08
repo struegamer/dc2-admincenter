@@ -1,0 +1,27 @@
+<div class="content_list">
+  <table cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th><input id="check_all" type="checkbox" name="check_all"/></th>
+        <tH>Username</th>
+        <tH>Realname</tH>
+        <th>Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr url="<%= edit_admin_user_path(user) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_user_path(user) %>"/></td>
+        <td><%= user.username %></td>
+        <td><%= user.firstname %> <%= user.lastname %></td>
+        <td><% if user.is_admin %>&#x2713;<% else %>&#x2717;<% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="userbtn" class="buttonbar">
+    <input type="button" name="btn_add" value="Add" class="button"/>
+    <input type="button" name="btn_delete" value="Delete" class="button"/>
+    <input type="button" name="btn_refresh" value="Refresh" class="button"/>
+  </div>
+</div>

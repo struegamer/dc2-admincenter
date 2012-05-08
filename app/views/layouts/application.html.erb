@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dc2Admin</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+        <body class="theme dark">
+                <div id="page" class="page">
+                        <div id="header" class="l_header">
+                                <div id="main_navigation" class="menubar">
+                                  <%= render "layouts/menubar" %>
+                                </div>
+                        </div>
+                        <div id="information" class="information">
+                                <%= render "layouts/titleinformation" %>
+                                <%= render "layouts/userinformation" %>
+                        </div>
+                        <div class="clear-all"></div>
+                        <div id="content">
+                          <%= yield %>
+                        </div>
+                        <div id="footer">
+                        </div>
+                </div>
+        </body>
+</html>
+

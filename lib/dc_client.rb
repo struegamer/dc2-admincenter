@@ -2,9 +2,9 @@ module DcClient
   require "xmlrpc/client"
   
   class Connection
-    def initialize(xmlrpc_url)
-      @xmlrpc_url=xmlrpc_url
-      @proxy=XMLRPC::Client.new2(@xmlrpc_url)
+    def initialize(dcb)
+      @dcb=dcb
+      @proxy=XMLRPC::Client.new2(@dcb.url)
     end
   end
 

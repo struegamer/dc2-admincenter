@@ -7,13 +7,9 @@
         <% end %>
       </UL>
     </LI>
-    <LI class="submenu">Servers
-      <UL id="servers" class="submenu hidden">
-        <LI><a href="#">Foo</a></LI>
-        <LI><a href="#">Foo1</a></LI>
-      </UL>
-    </LI>
-
+    <% if @dcb %>
+      <LI><%= link_to "Servers", backends_servers_path({:view=>"list",:id=>@dcb}), :id => "get_server_list" , :class => "button", :remote=>true, :update => "server_list" %></LI>
+    <% end %>
   </UL>
 </div>
 

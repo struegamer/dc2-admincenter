@@ -1,7 +1,9 @@
 class Backends::MainController < ApplicationController
   before_filter :require_login
 
-  def list
-    @dcb=Dcbackend.first(:id => params[:id])
+  def index
+    @dcblist=Dcbackend.all
+    @dcb=Dcbackend.first(:id => params[:backend_id])
+
   end
 end

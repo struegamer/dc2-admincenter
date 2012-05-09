@@ -17,7 +17,7 @@ Dc2Admin::Application.routes.draw do
 
   namespace :backends do
     resources :main
-    match "main/:backend_id" => "main#list"
+    resources :servers
   end
 
 

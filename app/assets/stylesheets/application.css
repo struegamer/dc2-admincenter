@@ -289,6 +289,15 @@ DIV.collapsable {
   border:#eee 1px solid;
 }
 
+TABLE.data-entry {
+  padding:10px;
+}
 TABLE.data-entry TR TH {
   text-align:left;
+  padding:5px;
+}
+
+TABLE.data-entry TR TD {
+  text-align:left;
+  padding:5px;
 }

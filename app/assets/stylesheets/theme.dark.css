@@ -123,3 +123,25 @@
 .theme.dark table.dataTable tr.even td.sorting_2 { background-color: #eee;color:#000; }
 .theme.dark table.dataTable tr.even td.sorting_3 { background-color: #eee;color:#000; }
 
+
+.theme.dark table.data-entry TR TD INPUT[type="text"] {
+    padding: 0 5px 0 22px;
+    border: 1px solid #1c252b;
+    height: 30px;
+    color: #9fa8b0;
+    font-size:8pt;
+    line-height: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px #1f272b;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    background: #20282D; /* old browsers */
+    background: -moz-linear-gradient(top, #20282D 3%, #252E34 51%, #222A30 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20282D', endColorstr='#222A30',GradientType=0 ); /* ie */
+    -moz-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Firefox */
+    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */
+    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */
+
+}

@@ -1,8 +1,8 @@
 <div id="server_detail_view">
-  <div id="server_detail_general" >
+  <div id="server_detail_general">
     <h2 class="collapsable ui-corner-all ui-widget-header">General Informations</h2>
     <div class="collapse">
-      <table cellpadding="0" cellspacing="0" class="table_input">
+      <table class="data-entry" cellpadding="0" cellspacing="0" class="table_input">
         <tr>
           <th>UUID</th>
           <TD><%= @server_detail["server"]["uuid"] %></td>
@@ -20,12 +20,12 @@
           <td><%= @server_detail["server"]["product_name"]%></td>
         </tr>
         <tr>
-          <tH>Asset Tags</th>
-          <td><%= @server_detail["server"]["asset_tags"]%></td>
+          <tH class="data-entry-click" id="server_asset_tags">Asset Tags</th>
+          <td><span class="data-entry-input" id="server_asset_tags"><%= @server_detail["server"]["asset_tags"]%></span></td>
         </tR>
         <tr>
-          <tH>Location</tH>
-          <td><%= @server_detail["server"]["location"]%></td>
+          <tH class="data-entry-click" id="server_location">Location</tH>
+          <td><span class="data-entry-input" id="server_location"><%= @server_detail["server"]["location"]%></span></td>
         </tr>
       </table>
     </div>

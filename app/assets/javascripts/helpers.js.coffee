@@ -53,3 +53,18 @@
 				$(this).parent().children(".collapse").hide()
 				$(this).parent().children(".collapse").addClass("hidden")
 
+@generate_data_inputs = (classes) ->
+  $(classes).each ->
+    data_id=$(this).attr("id")
+    $(this).click ->
+      console.log data_id
+      td_elem=$("span.data-entry-input#"+data_id)
+      old_text=td_elem.text()
+      pre_rec=data_id.split("_")[0]
+      post_rec=data_id.split("server_")[1]
+      console.log pre_rec
+      console.log post_rec
+      td_elem.text("")
+      input_element=$('<input type="text" name="'+pre_rec+'['+post_rec+']" value="'+old_text+'"/>').css("float","left")
+      td_elem.prepend(input_element)
+      td_elem.append('<span class="button">+</span>')

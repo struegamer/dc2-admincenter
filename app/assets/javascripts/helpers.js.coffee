@@ -25,3 +25,31 @@
 			console.log btn_type_id
 			alert btn_arr
 			return false
+
+@generate_collapsables = (id) ->
+	$(id+" h2.collapsable").each ->
+		$(this).css "cursor", "pointer"
+		a=$('<span class="ui-icon"></span>').css("float","left")
+		if ($(this).hasClass "hidden")
+			a.addClass "ui-icon-triangle-1-e"
+			a.removeClass "ui-icon-triangle-1-s"
+		else
+			a.removeClass "ui-icon-triangle-1-e"
+			a.addClass "ui-icon-triangle-1-s"
+		$(this).prepend(a)
+
+
+		$(this).click ->
+			if ($(this).parent().children(".collapse").hasClass "hidden")
+				$(this).children(".ui-icon").addClass "ui-icon-triangle-1-s"
+				$(this).children(".ui-icon").removeClass "ui-icon-triangle-1-e"
+
+				$(this).parent().children(".collapse").show()
+				$(this).parent().children(".collapse").removeClass "hidden"
+			else
+				$(this).children(".ui-icon").removeClass "ui-icon-triangle-1-s"
+				$(this).children(".ui-icon").addClass "ui-icon-triangle-1-e"
+
+				$(this).parent().children(".collapse").hide()
+				$(this).parent().children(".collapse").addClass("hidden")
+

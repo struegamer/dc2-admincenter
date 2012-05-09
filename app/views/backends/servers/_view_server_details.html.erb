@@ -1,0 +1,76 @@
+<div id="server_detail_view">
+  <div id="server_detail_general" >
+    <h2 class="collapsable ui-corner-all ui-widget-header">General Informations</h2>
+    <div class="collapse">
+      <table cellpadding="0" cellspacing="0" class="table_input">
+        <tr>
+          <th>UUID</th>
+          <TD><%= @server_detail["server"]["uuid"] %></td>
+        </tr>
+        <tr>
+          <tH>Serial Number</th>
+          <td><%= @server_detail["server"]["serial_no"]%></tD>
+        </tr>
+        <tr>
+          <th>Manufacturer</tH>
+          <td><%= @server_detail["server"]["manufacturer"]%></td>
+        </tr>
+        <tr>
+          <th>Product Name</th>
+          <td><%= @server_detail["server"]["product_name"]%></td>
+        </tr>
+        <tr>
+          <tH>Asset Tags</th>
+          <td><%= @server_detail["server"]["asset_tags"]%></td>
+        </tR>
+        <tr>
+          <tH>Location</tH>
+          <td><%= @server_detail["server"]["location"]%></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="server_details_macaddr" class="collapsable">
+    <h2 class="collapsable ui-corner-all ui-widget-header">Server Network Interfaces</h2>
+    <div class="collapse">
+      <table cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th>MAC Addr</th>
+            <th>OS Name</th>
+          </tr>
+        </THEAD>
+        <tbody>
+        <% @server_detail["macaddr"].each do |mac| %>
+          <tr>
+            <td><%= mac["mac_addr"] %></td>
+            <td><%= mac["device_name"] %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% if @server_detail["ribs"] %>
+  <div id="server_details_ribs" class="collapsable">
+    <h2 class="collapsable ui-corner-all ui-widget-header">Server Remote Insight Boards</h2>
+    <div class="collapse">
+    <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <TH>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @server_detail["ribs"].each do |rib| %>
+          <tr>
+            <td><%= rib["remote_type"] %></td>
+            <td><%= rib["remote_ip"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+</div>

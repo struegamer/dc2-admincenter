@@ -7,8 +7,14 @@
         <% end %>
       </UL>
     </LI>
+  </UL>
+  <UL class="vertical">
     <% if @dcb %>
-      <LI><%= link_to "Servers", backends_servers_path({:view=>"list",:id=>@dcb}), :id => "get_server_list" , :class => "button", :remote=>true, :update => "server_list" %></LI>
+      <LI><%= @dcb.title %>(<%= @dcb.location %>)
+        <UL id="dcbackend_<%= @dcb.id %>" class="stdlist">
+          <LI><%= link_to "Servers", backends_servers_path({:view=>"list",:id=>@dcb}), :id => "get_server_list" , :remote=>true, :update => "server_list" %></LI>
+          <LI><a href="#">Hosts</a></LI>
+        </UL>
     <% end %>
   </UL>
 </div>

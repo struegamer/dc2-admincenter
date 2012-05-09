@@ -8,9 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require ../../../vendor/assets/jquery-ui/smoothness/jquery-ui.css
  *= require datatable/jquery.dataTables.css
  *= require datatable/jquery.dataTables_themeroller.css
- *= require jquery-ui/dark-hive/jquery-ui.css
  *= require_self
  *= require_tree .
 */
@@ -167,8 +167,9 @@ UL.horizontal LI A {
 
 .content_area {
   float:left;
-  width:820px;
+  width:800px;
   margin-top:10px;
+  margin-left:10px;
 }
 
 
@@ -178,6 +179,7 @@ UL.horizontal LI A {
 }
 
 .content_area .data_list {
+	width:100%;
 }
 
 .buttonbar {
@@ -270,4 +272,23 @@ UL.vertical LI.submenu UL.submenu LI A {
 .content_menu UL LI A {
   text-decoration:underline;
   display:block;
+}
+
+table.dataTable{
+	font-size:8pt;
+}
+
+UL.stdlist {
+	list-style:none;
+}
+
+DIV.collapsable {
+  margin-top:20px;
+}
+.collapse {
+  border:#eee 1px solid;
+}
+
+TABLE.data-entry TR TH {
+  text-align:left;
 }

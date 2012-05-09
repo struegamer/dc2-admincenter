@@ -112,3 +112,14 @@
     box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */
 }
 
+
+.theme.dark table.dataTable tr.odd { background-color: #555; }
+.theme.dark table.dataTable tr.even { background-color: #555; }
+
+.theme.dark table.dataTable tr.odd td.sorting_1 { background-color: #eee;color:#000; }
+.theme.dark table.dataTable tr.odd td.sorting_2 { background-color: #eee;color:#000; }
+.theme.dark table.dataTable tr.odd td.sorting_3 { background-color: #eee;color:#000; }
+.theme.dark table.dataTable tr.even td.sorting_1 { background-color: #eee;color:#000; }
+.theme.dark table.dataTable tr.even td.sorting_2 { background-color: #eee;color:#000; }
+.theme.dark table.dataTable tr.even td.sorting_3 { background-color: #eee;color:#000; }
+

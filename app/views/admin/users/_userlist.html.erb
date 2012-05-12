@@ -11,9 +11,9 @@
       <% @users.each do |user| %>
       <tr url="<%= edit_admin_user_path(user) %>">
         <td><input class="del_check" type="checkbox" name="check" value="<%= admin_user_path(user) %>"/></td>
-        <td><%= user.username %></td>
-        <td><%= user.firstname %> <%= user.lastname %></td>
-        <td><% if user.is_admin %>&#x2713;<% else %>&#x2717;<% end %></td>
+        <td class="data-cell"><%= user.username %></td>
+        <td class="data-cell"><%= user.firstname %> <%= user.lastname %></td>
+        <td class="data-cell"><% if user.is_admin %>&#x2713;<% else %>&#x2717;<% end %></td>
         </tr>
       <% end %>
     </tbody>

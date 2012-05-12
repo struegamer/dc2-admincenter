@@ -16,8 +16,8 @@ $(document).ready ->
 		refresh_url:"/admin/users"
 		delete_func:delete_users
 	$("#userlist TABLE TBODY TR").each ->
-		$(this).click ->
-			window.location.href=$(this).attr "url"
+		$(this).children("TD.data-cell").click ->
+			window.location.href=$(this).parent().attr "url"
 
 delete_users = () ->
 	console.log "hello"

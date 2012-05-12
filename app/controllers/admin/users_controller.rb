@@ -49,7 +49,9 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user=User.first(:id => params[:id])
-    @user.password=params[:user][:password]
+    if params[:user][:password] != nil and params[:user][:password] != ""
+      @user.password=params[:user][:password]
+    end
     @user.firstname=params[:user][:firstname]
     @user.lastname=params[:user][:lastname]
     @user.is_admin=params[:user][:is_admin]

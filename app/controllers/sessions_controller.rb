@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   
   def create
     @user = User.authenticate(params[:username],params[:password])
+    Rails::logger::debug(@user)
     if @user
       session[:user_id]=@user.id.to_s
       session[:is_authenticated]=true

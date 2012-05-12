@@ -11,10 +11,9 @@
   <%= f.text_field :firstname, :class => "span3", :placeholder => "Firstname" %>
   <%= f.label :lastname, "Lastname" %>
   <%= f.text_field :lastname, :class => "span3", :placeholder =>"Lastname" %>
-    <%= f.label :is_admin,"Admin Rights" %>
-    <%= f.check_box :is_admin %>
-  <div class="input_row">
-    <div class="input_field"><%= f.submit :class=>"button" %> </div>
-  </div>
+  <%= f.label :is_admin, :class => "checkbox" do %>
+    <%= f.check_box :is_admin %> Admin Rights
+  <% end %>
+  <%= f.submit :class=>"btn btn-primary" %> <%= link_to "Cancel", admin_users_path, :class=>"btn" %>
 <% end %>
 </div>

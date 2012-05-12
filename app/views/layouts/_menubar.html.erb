@@ -40,7 +40,7 @@
       </LI>
     <% else %>
       <LI class="dropdown-toggle">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= get_user("name") %>(<%= get_user("username") %>)<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= get_user("name") %> (<%= get_user("username") %>)<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <LI><%= link_to "Logout", "/logout"%></LI>
         </UL>

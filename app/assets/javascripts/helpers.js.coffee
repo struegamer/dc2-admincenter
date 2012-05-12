@@ -1,5 +1,5 @@
 @create_buttonbar = (id,options) ->
-	$(id+".buttonbar .button").each ->
+	$(id+" .btn").each ->
 		id_name=$(this).attr "name"
 		if id_name == "btn_add"
 			$(this).click ->
@@ -65,6 +65,10 @@
       console.log pre_rec
       console.log post_rec
       td_elem.text("")
-      input_element=$('<input type="text" name="'+pre_rec+'['+post_rec+']" value="'+old_text+'"/>').css("float","left")
+      input_element=$('<input type="text" name="'+pre_rec+'['+post_rec+']" value="'+old_text+'"/>').css("float","left").css("width","60%")
       td_elem.prepend(input_element)
-      td_elem.append('<span class="button">+</span>')
+      button_edit=$('<span class="ui-button ui-state-default ui-corner-all ui-icon ui-icon-check"></span>')
+      button_cancel=$('<span class="ui-button ui-state-default ui-corner-all ui-icon ui-icon-cancel"></span>')
+      td_elem.append(button_cancel)
+      td_elem.append(button_edit)
+

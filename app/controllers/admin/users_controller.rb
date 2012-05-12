@@ -5,6 +5,8 @@ class Admin::UsersController < ApplicationController
   before_filter :require_admin
 
   def index
+    @menuname="Administration"
+    @dcblist = Dcbackend.all()
     @users=User.all()
     respond_to do |format|
       format.html
@@ -13,6 +15,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def new
+    @dcblist = Dcbackend.all()
+    @menuname="Administration"
     @user = User.new
   end
 
@@ -38,6 +42,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @dcblist=Dcbackend.all()
+    @menuname="Administration"
     @user=User.first(:id => params[:id])
   end
 

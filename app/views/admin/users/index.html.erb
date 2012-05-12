@@ -1,8 +1,8 @@
-<%= render "admin/sidemenu" %>
 <% content_for :titleinformation do %>
 Userlist
 <% end %>
-
-<div id="userlist" class="content_area">
-  <%= render "admin/users/userlist" %>
-</div>
+  <div id="userlist" class="row-fluid">
+    <div class="span5">
+      <%= render "admin/users/userlist" %>
+    </div>
+  </div>

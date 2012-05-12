@@ -5,10 +5,14 @@ class Admin::DcbackendsController < ApplicationController
   before_filter :require_admin
 
   def index
+    @menuname="Administration"
+    @dcblist=Dcbackend.all()
     @dclist=Dcbackend.all()
   end
 
   def new
+    @menuname="Administration"
+    @dcblist=Dcbackend.all()
     @dcbackend=Dcbackend.new
   end
 
@@ -30,6 +34,8 @@ class Admin::DcbackendsController < ApplicationController
   end
 
   def edit
+    @dcblist=Dcbackend.all()
+    @menuname="Administration"
     @dcbackend= Dcbackend.first(:id => params[:id])
   end
 

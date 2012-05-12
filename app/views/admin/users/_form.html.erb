@@ -1,29 +1,18 @@
-<div class="form">
-  <%= form_for [:admin, @user] do |f| %>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :username, "Username", :class=>"form_label" %></div>
-    <% if @user.username == "" %>
-      <div class="input_field"><%= f.text_field :username, :class => "form_input" %></div>
+  <%= form_for [:admin, @user], :class=>"well form-vertical" do |f| %>
+    <%= f.label :username, "Username" %>
+    <% if @user.username == nil %>
+      <%= f.text_field :username, :class => "span3", :placeholder=>"Username" %>
     <% else %>
-      <div class="input_field"><%= f.text_field :username, :class => "form_input", :readonly => true , :disabled=>true%></div>
+      <%= f.text_field :username, :class => "span3", :readonly => true , :disabled=>true %>
     <% end %>
-  </div>
-  <div class="input_row">
-    <div class="input label"><%= f.label :password,"Password", :class=>"form_label" %></div>
-    <div class="input_field"><%= f.password_field :password, :class => "form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :firstame,"Firstname", :class => "form_label" %></div>
-    <div class="input_field"><%= f.text_field :firstname, :class => "form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :lastname, "Lastname", :class => "form_label" %></div>
-    <div class="input_field"><%= f.text_field :lastname, :class => "form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :is_admin,"Admin Rights", :class => "form_label" %></div>
-    <div class="input_field"><%= f.check_box :is_admin, :class => "form_input" %></div>
-  </div>
+  <%= f.label :password,"Password" %>
+  <%= f.password_field :password, :class => "span3", :placeholder => "Password" %>
+  <%= f.label :firstame,"Firstname" %>
+  <%= f.text_field :firstname, :class => "span3", :placeholder => "Firstname" %>
+  <%= f.label :lastname, "Lastname" %>
+  <%= f.text_field :lastname, :class => "span3", :placeholder =>"Lastname" %>
+    <%= f.label :is_admin,"Admin Rights" %>
+    <%= f.check_box :is_admin %>
   <div class="input_row">
     <div class="input_field"><%= f.submit :class=>"button" %> </div>
   </div>

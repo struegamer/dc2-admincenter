@@ -1,11 +1,51 @@
-<UL class="horizontal">
-  <% if not logged_in? -%>
-  <LI><%= link_to "Login", "/login" %></LI>
-  <% else -%>
-  <LI><%= link_to "Logout","/logout" %></LI>
-  <% end -%>
-  <% if logged_in? && is_admin? %>
-    <LI><%= link_to "Administration", admin_path -%></LI>
-  <% end %>
-  <LI><%= link_to "Home", "/" -%></LI>
-</UL>
+<div class="container-fluid">
+  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </a>
+  <a href"#" class="brand">DC² AdminCenter</a>
+  <div class="nav-collapse">
+  <UL class="nav">
+    <LI><%= link_to "Home", "/" %></LI>
+    <% if logged_in? %>
+      <% if @dcblist %>
+        <LI class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Backends<b class="caret"></B></A>
+          <UL class="dropdown-menu">
+            <% @dcblist.each do |dcb| %>
+              <LI><%= link_to dcb.title, :controller => "/backends/main", :backend_id => dcb %></LI>
+            <% end %>
+          </UL>
+        </LI>
+      <% end %>
+    <% end %>
+    <% if logged_in? && is_admin? %>
+      <LI class="<% if @menuname == "Administration" %>active<%end%> dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></B></A>
+        <UL class="dropdown-menu">
+          <LI><%= link_to "User Administration", admin_users_path -%></LI>
+          <LI><%= link_to "DC² Backends", admin_dcbackends_path -%></LI>
+        </UL>
+      </LI>
+    <% end %>
+  </UL>
+  <UL class="nav pull-right">
+    <% if not logged_in? -%>
+      <%= form_tag sessions_path, :class=> "navar-form form-inline pull-right" do -%>
+        <%= text_field_tag 'username', params[:username], :placeholder => "Username" , :class => "input-medium" %>
+        <%= password_field_tag 'password',params[:password], :placeholder => "Password", :class=> "input-medium" %>
+        <%= submit_tag "Login", :class => "btn btn-primary span1" %>
+        <% end %>
+      </LI>
+    <% else %>
+      <LI class="dropdown-toggle">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= get_user("name") %>(<%= get_user("username") %>)<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <LI><%= link_to "Logout", "/logout"%></LI>
+        </UL>
+      </LI>
+    <% end %>
+  </UL>
+</div>
+</div>

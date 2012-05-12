@@ -1,0 +1,24 @@
+<div class="row-fluid">
+  <% if @dcbservers -%>
+    <div id="datacenters" class="span5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Datacenter</th>
+          <th>No. of Servers</tH>
+          <th>Number of Hosts</th>
+        </tr>
+      </thead>
+      <% @dcbservers.each do |dcb| %>
+        <tbody>
+          <tr>
+            <td><%= dcb["title"] %></td>
+            <td><%= dcb["server_count"] %></tD>
+            <td>TBD</td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+  <% end %>
+</div>

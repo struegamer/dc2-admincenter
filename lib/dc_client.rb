@@ -33,6 +33,10 @@ module DcClient
       rib_list=@ribs.list(server_id)
       rib_list
     end
+    def count
+      server_list=@proxy.call("dc2.inventory.servers.list")
+      server_list.length
+    end
   end
 
   class MacAddrs < Connection

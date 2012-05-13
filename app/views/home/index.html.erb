@@ -1,5 +1,8 @@
+<% if logged_in? %>
 <% content_for :titleinformation do %>
   Dashboard
 <% end %>
 
 <%= render "home/info_server" %>
+
+<% end %>

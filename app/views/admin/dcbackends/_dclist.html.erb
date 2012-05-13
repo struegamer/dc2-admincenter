@@ -1,5 +1,4 @@
-<div class="content_list">
-  <table cellspacing="0" cellpadding="0">
+  <table cellspacing="0" cellpadding="0" class="table table-striped">
     <thead>
       <tr>
         <th><input id="check_all" type="checkbox" name="check_all"/></tH>
@@ -11,15 +10,15 @@
       <% @dclist.each do |dc| %>
         <tr url="<%= edit_admin_dcbackend_path(dc) %>">
           <td><input class="del_check" type="checkbox" name="check" value="<%= admin_dcbackend_path(dc) %>"/></td>
-          <td><%= dc.title %></td>
-          <td><%= dc.location %></td>
+          <td class="data-cell"><%= dc.title %></td>
+          <td class="data-cell"><%= dc.location %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <div id="dclistbtn" class="buttonbar">
-    <input type="button" name="btn_add" value="Add" class="button"/>
-    <input type="button" name="btn_delete" value="Delete" class="button"/>
-    <input type="button" name="btn_refresh" value="Refresh" class="button"/>
+  <div id="dclistbtn" class="btn-group pull-right">
+    <input type="button" name="btn_add" value="Add" class="btn"/>
+    <input type="button" name="btn_delete" value="Delete" class="btn"/>
+    <input type="button" name="btn_refresh" value="Refresh" class="btn"/>
   </div>
 </div>

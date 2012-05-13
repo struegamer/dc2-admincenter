@@ -12,12 +12,12 @@ $(document).ready ->
 				this.checked=false
 	create_buttonbar "#dclistbtn",
 		add_url:"/admin/dcbackends/new"
-		refresh_url:"/admin/dcbackeneds"
+		refresh_url:"/admin/dcbackends"
 		delete_func:delete_dcentries
 
 	$("#backendlist TABLE TBODY TR").each ->
-		$(this).click ->
-			window.location.href=$(this).attr "url"
+		$(this).children("TD.data-cell").click ->
+			window.location.href=$(this).parent().attr "url"
 
 delete_dcentries = () ->
 	$(".del_check").each ->

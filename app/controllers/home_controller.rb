@@ -1,12 +1,10 @@
 class HomeController < ApplicationController
-  before_filter :logged_in?
 
   def index
     @dcblist=Dcbackend.all()
     @dcbservers=[]
     @dcblist.each do |dcb|
-      proxy=DcClient::Servers.new(dcb)
-      @dcbservers.append({"title"=>dcb[:title],"server_count"=>proxy.count})
+      @dcbservers.append({"title"=>dcb[:title],"id"=>dcb[:_id]})
     end
   end
 end

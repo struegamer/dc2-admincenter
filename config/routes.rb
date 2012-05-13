@@ -10,6 +10,8 @@ Dc2Admin::Application.routes.draw do
   end
   match "/admin" => "admin/main#index"
 
+  resource :stats
+  match "/stats/servers/:backend_id" => "stats#servers"
 
   resources :sessions
   match "/login" => "sessions#new"

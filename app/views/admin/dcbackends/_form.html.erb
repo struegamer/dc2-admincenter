@@ -1,20 +1,9 @@
-<div class="form">
-  <%= form_for [:admin, @dcbackend] do |f| %>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :title, "Title", :class=>"form_label" %></div>
-    <div class="input_field"><%= f.text_field :title, :class=>"form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :url, "RPC Url",:class => "form_label"%></div>
-    <div class="input_field"><%= f.url_field :url, :class=>"form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_label"><%= f.label :location,"DC Location",:class=>"form_label"%></div>
-    <div class="input_field"><%= f.text_field :location, :class => "form_input" %></div>
-  </div>
-  <div class="input_row">
-    <div class="input_field"><%= f.submit :class=>"button" %> </div>
-  </div>
-
-  <% end %>
-</div>
+<%= form_for [:admin, @dcbackend],:class=>"well form-vertical" do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title, :class=>"span3" , :placeholder => "Title" %>
+  <%= f.label :url, "RPC Url" %>
+  <%= f.url_field :url, :class=>"span3", :placeholder => "RPC Url" %>
+  <%= f.label :location,"DC Location" %>
+  <%= f.text_field :location, :class => "span3", :placeholder => "Location" %></div>
+<%= f.submit :class=>"btn btn-primary" %> <%= link_to "Cancel", admin_dcbackends_path, :class=>"btn" %>
+<% end %>

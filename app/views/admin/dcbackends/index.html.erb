@@ -1,8 +1,9 @@
-<%= render "admin/sidemenu" %>
 <% content_for :titleinformation do %>
 DC² Backend List
 <% end %>
 
-<div id="backendlist" class="content_area">
-  <%= render "admin/dcbackends/dclist" %>
+<div id="backendlist" class="row-fluid">
+  <div class="span5">
+    <%= render "admin/dcbackends/dclist" %>
+  </div>
 </div>

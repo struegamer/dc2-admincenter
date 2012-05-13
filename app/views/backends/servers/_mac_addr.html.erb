@@ -1,0 +1,25 @@
+<div id="server-mac-addrs" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>MAC Address</th>
+              <th>Device Name</tH>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["macs"].each do |mac| %>
+              <tr>
+                <td><%= mac["mac_addr"] %></td>
+                <td><%= mac["device_name"] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -2,14 +2,24 @@
   Backend "<%= @dcb.title %>" active
 <% end %>
 
-<div id="server_<%= @dcb.id %>" class="row-fluid">
+<div id="dc_<%= @dcb.id %>" class="row-fluid">
   <div class="span12">
     <ul class="nav nav-tabs" id="inventory">
       <LI><a href="#servers" data-toggle="tab">Servers</a></LI>
       <LI><a href="#hosts" data-toggle="tab">Hosts</a></LI>
     </UL>
     <div class="tab-content">
-      <div class="tab-pane" id="servers" data-dc-record="<%= @dcb.id %>">
+      <div class="tab-pane" id="servers" data-dc-record="<%= url_for :controller => "/backends/servers", :backend_id => @dcb.id %>">
+        <div class="row-fluid">
+          <div class="span12">
+            <%= form_tag :controller => backends_servers_search_path() %>
+              <input type="hidden" value="<%= @dcb.id %>" name="backend_id"/>
+              <input type="submit" class="btn btn-primary pull-right" value="Search!"/>
+              <input type="text" class="input-large search-query pull-right" name="search"/> 
+              <%= select_tag "search[servers]",options_for_select(@server_search.collect {|u| [u["title"], u["name"]] }),:class=>"search-query pull-right" %> 
+            </form>
+          </div>
+        </div>
         <%= render "backends/list_servers" %>
       </div>
       <div class="tab-pane" id="hosts" data-dc-record="<%= @dcb.id %>"></div>

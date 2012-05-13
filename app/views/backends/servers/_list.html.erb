@@ -1,0 +1,10 @@
+<% @servers["serverlist"].each do |server| %>
+  <tr data-show-url="<%= url_for backends_server_path(server["_id"], :backend_id=> @dcb.id) %>">
+    <td><%= server["uuid"] %></td>
+    <td><%= server["serial_no"] %></td>
+    <td><%= server["manufacturer"] %></td>
+    <td><%= server["product_name"] %></td>
+    <td><%= server["asset_tags"] %></td>
+    <td><%= server["location"] %></td>
+  </tr>
+<% end %>

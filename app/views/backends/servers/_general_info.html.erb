@@ -1,0 +1,29 @@
+<div class="tab-pane" id="server-general-info">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">UUID</div>
+      <div class="span8"><%= @server_info["server"]["uuid"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Serial Number</div>
+      <div class="span8"><%= @server_info["server"]["serial_no"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Manufacturer</div>
+      <div class="span8"><%= @server_info["server"]["manufacturer"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Product Name</div>
+      <div class="span8"><%= @server_info["server"]["product_name"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Asset Tags</div>
+      <div class="span8"><%= @server_info["server"]["asset_tags"] %></div>
+    </div>  
+    <div class="row-fluid">
+      <div class="span2">Location</div>
+      <div class="span8"><%= @server_info["server"]["location"] %></div>
+    </div>
+  </div>
+</div>
+

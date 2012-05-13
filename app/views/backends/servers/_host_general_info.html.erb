@@ -1,0 +1,16 @@
+<div class="tab-pane" id="host-general-info">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">Hostname</div>
+      <div class="span8"><%= @server_info["server"]["host"]["hostname"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Domainname</div>
+      <div class="span8"><%= @server_info["server"]["host"]["domainname"] %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">Environment</div>
+      <div class="span8"><%= @server_info["server"]["host"]["environments"] %></div>
+    </div>
+  </div>
+</div>

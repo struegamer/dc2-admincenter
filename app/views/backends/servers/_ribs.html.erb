@@ -1,0 +1,26 @@
+<div id="server-ribs" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>IP Address / Hostname</tH>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["ribs"].each do |rib| %>
+              <tr>
+                <td><%= rib["remote_type"] %></td>
+                <td><%= rib["remote_ip"] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

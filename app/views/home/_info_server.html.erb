@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div id="datacenters" class="row-fluid">
   <% if @dcbservers -%>
     <div id="datacenters" class="span5">
     <table class="table">
@@ -11,9 +11,9 @@
       </thead>
       <% @dcbservers.each do |dcb| %>
         <tbody>
-          <tr>
+          <tr data-url="<%= url_for :controller => "/backends/main",:backend_id => dcb["id"] %>" >
             <td><%= dcb["title"] %></td>
-            <td><div id="<%= dcb["id"] %>" class="stats_req"></div></tD>
+            <td><div id="<%= dcb["id"] %>" class="stats_req" data-stats="servers"></div></tD>
             <td>TBD</td>
           </tr>
         </tbody>

@@ -1,0 +1,22 @@
+<div id="host-classes" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Classname</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["host"]["hostclasses"].each do |hcl| %>
+              <tr>
+                <td><%= hcl %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

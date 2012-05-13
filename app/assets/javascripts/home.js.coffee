@@ -3,15 +3,19 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-	$("div.stats_req").each ->
+	$("#datacenters div.stats_req").each ->
 		a=$.ajax
-			url:"/stats/servers/"+$(this).attr "id"
+			url:"/stats/"+$(this).attr("data-stats")+"/"+$(this).attr "id"
 			type:"GET"
 			dataType:"json"
 			context:$(this)
 		a.done (data) ->
 			$(this).parent().html('<span class="label label-success">'+data.count+'</span>')
 		a.fail ->
-			$(this).parent().html('<span class="label label-important">Failed</span>')
+			$(this).parent().html('<span class="label label-important">Failed to retrieve data</span>')
 
+	$("#datacenters tbody tr").each ->
+		$(this).css "cursor","pointer"
+		$(this).click -> 
+			window.location.href = $(this).attr "data-url"
 

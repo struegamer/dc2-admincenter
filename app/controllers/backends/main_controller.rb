@@ -4,6 +4,5 @@ class Backends::MainController < ApplicationController
   def index
     @dcblist=Dcbackend.all
     @dcb=Dcbackend.first(:id => params[:backend_id])
-
   end
 end

@@ -1,7 +1,7 @@
-<table id="serverlist" cellpadding="0" cellspacing="0">
+<table id="serverlist" cellpadding="0" cellspacing="0" class="table table-striped">
   <thead>
     <TR>
-  <TH>Action</tH>
+      <TH>Action</tH>
       <th>UUID</th>
       <tH>Serial Number</th>
       <th>Manufacturer</th>
@@ -11,16 +11,5 @@
     </tr>
   </thead>
   <tbody>
-    <% @dcb_conn.list.each do |dc| %>
-      <tr>
-        <td><%= link_to "&#x270E;".html_safe, backends_servers_path({:view=>"detail",:id=>@dcb,:server_id=>dc["_id"]}), :id=>"get_server_detail_"+dc["_id"], :remote=>true, :update => "server_detail",:class=>"button edit" %><span class="button">&#x2717;</span></td>
-      <td><%= truncate(dc["uuid"],:length => 10, :omission => "...") %></td>
-      <td><%= truncate(dc["serial_no"],:length => 10, :omission=>"...") %></td>
-      <td><%= dc["manufacturer"] %></td>
-      <td><%= dc["product_name"]%></td>
-      <td><%= dc["asset_tags"]%></td>
-      <td><%= dc["location"]%></td>
-    </tr>
-  <% end %>
-</tbody>
+  </tbody>
 </table>

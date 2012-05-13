@@ -20,6 +20,7 @@ Dc2Admin::Application.routes.draw do
   namespace :backends do
     resources :main
     resources :servers
+    match "servers/:backend_id" => "servers#index"
   end
 
 

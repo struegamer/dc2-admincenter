@@ -10,8 +10,8 @@ $(document).ready ->
 			dataType:"json"
 			context:$(this)
 		a.done (data) ->
-			$(this).parent().html(data.count)
+			$(this).parent().html('<span class="label label-success">'+data.count+'</span>')
 		a.fail ->
-			$(this).parent().html("Failed")
+			$(this).parent().html('<span class="label label-important">Failed</span>')
 
 

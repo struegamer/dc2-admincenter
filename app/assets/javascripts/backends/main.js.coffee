@@ -3,29 +3,56 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
 #
+#
+tabify = (id) -> 
+	$(id + " a").click (e) ->
+		e.preventDefault();
+		$(this).tab("show")
+
 $(document).ready ->
-  $("#get_server_list").bind "ajax:beforeSend", (et,e) ->
-    if ($("#serverlist_wrapper").length)
-      $("#serverlist_wrapper").show()
-      if ($("#server_detail_view").length) 
-        $("#server_detail_view").remove()
-      return false
+	tabify "#inventory"
+	$('#inventory a[data-toggle="tab"]').bind 'show', (e) ->
+		console.log $($(e.target).attr "href").attr "data-dc-record"
+		dcb_id=$($(e.target).attr "href").attr "data-dc-record"
+		tbody=$("#serverlist TBODY")
+		a=$.ajax 
+			url:"/backends/servers/"+dcb_id
+			type:"GET"
+			dataType:"json"
+		a.done (data) ->
+			for i in data.serverlist
+				tr=$("<tr><td>"+i.uuid+"</td><td>"+i.serial_no+"</td><td>"+i.manufacturer+"</td><td>"+i.product_name+"</td><td>"+i.asset_tags+"</td><td>"+i.location+"</td></tr>")
+				tbody.append(tr)
+		a.fail ->
+			console.log "fail"
 
-  $("#get_server_list").bind "ajax:complete", (et, e) ->
-    $("#server_list").append(e.responseText)
-    odata=$("#serverlist").dataTable
-      "bJQueryUI": true
-      "aoColumnDefs": [
-        { "bSortable":false, "aTargets":[0] }
-      ]
-      "fnCreatedRow":(nRow,aData,iDataIndex) ->
-        $("a.button.edit").unbind "ajax:complete"
-        $("a.button.edit").bind "ajax:complete", (et,e) ->
-          $("#serverlist_wrapper").hide()
-          $("#server_list").append(e.responseText)
-          generate_collapsables("#server_detail_view")
-          generate_data_inputs("th.data-entry-click")
-          return false
+	$("#inventory a:first").tab("show")
 
-	
 
+
+#
+#  $("#get_server_list").bind "ajax:beforeSend", (et,e) ->
+#    if ($("#serverlist_wrapper").length)
+#      $("#serverlist_wrapper").show()
+#      if ($("#server_detail_view").length) 
+#        $("#server_detail_view").remove()
+#      return false
+#
+#  $("#get_server_list").bind "ajax:complete", (et, e) ->
+#    $("#server_list").append(e.responseText)
+#    odata=$("#serverlist").dataTable
+#      "bJQueryUI": true
+#      "aoColumnDefs": [
+#        { "bSortable":false, "aTargets":[0] }
+#      ]
+#      "fnCreatedRow":(nRow,aData,iDataIndex) ->
+#        $("a.button.edit").unbind "ajax:complete"
+#        $("a.button.edit").bind "ajax:complete", (et,e) ->
+#          $("#serverlist_wrapper").hide()
+#          $("#server_list").append(e.responseText)
+#          generate_collapsables("#server_detail_view")
+#          generate_data_inputs("th.data-entry-click")
+#          return false
+#
+#	
+#

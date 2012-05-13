@@ -1,6 +1,19 @@
-<%= render "/sidemenu" -%>
-<div id="server_<%= @dcb.id %>" class="content_area">
-  <div id="server_list" class="data_list">
+<% content_for :titleinformation do %>
+  Backend "<%= @dcb.title %>" active
+<% end %>
+
+<div id="server_<%= @dcb.id %>" class="row-fluid">
+  <div class="span12">
+    <ul class="nav nav-tabs" id="inventory">
+      <LI><a href="#servers" data-toggle="tab">Servers</a></LI>
+      <LI><a href="#hosts" data-toggle="tab">Hosts</a></LI>
+    </UL>
+    <div class="tab-content">
+      <div class="tab-pane" id="servers" data-dc-record="<%= @dcb.id %>">
+        <%= render "backends/list_servers" %>
+      </div>
+      <div class="tab-pane" id="hosts" data-dc-record="<%= @dcb.id %>"></div>
+    </div>
   </div>
 </div>
 

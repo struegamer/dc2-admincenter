@@ -1,0 +1,56 @@
+<div id="server_detail" class="container-fluid">
+  <div class="row-fluid">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="well">
+            <a data-toggle="collapse" data-target="#server-info" href="#">Server Informations</a>
+          </div>
+          <div id="server-info" class="collapse">
+            <div class="container-fluid">
+              <div class="row-fluid">
+                <div class="span6">
+                  <ul class="nav nav-tabs" id="serverTab">
+                    <LI><a href="#server-general-info" data-toggle="tab">General Informations</a></li>
+                    <LI><a href="#server-mac-addrs" data-toggle="tab">Network Interfaces</a></LI>
+                    <LI><a href="#server-ribs" data-toggle="tab">Remote Insight Boards</a></LI>
+                  </UL>
+                  <div class="tab-content">
+                    <%= render "backends/servers/edit_general_info" %>
+                    <%= render "backends/servers/edit_mac_addr" %>
+                    <%= render "backends/servers/ribs" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="well">
+          <a href="#" data-toggle="collapse" data-target="#host-infos">Host Informations</a>
+        </div>
+        <div id="host-infos" class="collapse">
+          <div class="container-fluid">
+            <div class="span12">
+              <ul class="nav nav-tabs" id="hostTab">
+                <LI><a href="#host-general-info" data-toggle="tab">General Informations</a></LI>
+                <li><a href="#host-classes" data-toggle="tab">Host Classes</a></li>
+                <li><a href="#host-interfaces" data-toggle="tab">Interfaces</a></li>
+              </ul>
+              <div class="tab-content">
+                <%= render "backends/servers/host_general_info"%>
+                <%= render "backends/servers/host_classes" %>
+                <%= render "backends/servers/host_interfaces" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

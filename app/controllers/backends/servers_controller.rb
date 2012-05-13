@@ -25,7 +25,24 @@ class Backends::ServersController < ApplicationController
     end
   end
 
-  def search
+  def update
+    @dcblist=Dcbackend.all()
+    @dcb=Dcbackend.first(:id => params[:backend_id])
+    Rails::logger::debug("Server #{params[:server]}")
+    Rails::logger::debug("MACs #{params[:macs]}")
+    respond_to do |format|
+      format.json { render :json => @dcb }
+    end
   end
 
+  def edit
+    @dcblist=Dcbackend.all()
+    @dcb=Dcbackend.first(:id=>params[:backend_id])
+    dcb_conn=DcClient::Servers.new(@dcb)
+    server=dcb_conn.get(params[:id])
+    @server_info={"server"=>server}
+    respond_to do |format| 
+      format.html
+    end
+  end
 end

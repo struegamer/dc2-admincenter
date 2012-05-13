@@ -19,12 +19,7 @@ Dc2Admin::Application.routes.draw do
 
   namespace :backends do
     resources :main
-    resources :servers do
-      member do
-        post 'search'
-      end
-    end
-    
+    resources :servers
   end
 
 

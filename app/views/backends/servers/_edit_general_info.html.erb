@@ -1,0 +1,30 @@
+<div class="tab-pane" id="server-general-info">
+  <div class="container-fluid">
+    <input type="hidden" name="server[_id]" value="<%= @server_info["server"]["_id"] %>"/>
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[uuid]","UUID" %></div>
+      <div class="span10"><%= text_field_tag "server[uuid]",@server_info["server"]["uuid"],:class=>"span8",:disabled=>true %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[serial_no]","Serial Number" %></div>
+      <div class="span10"><%= text_field_tag "server[serial_no]",@server_info["server"]["serial_no"],:class=>"span8",:disabled=>true %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[manufacturer]","Manufacturer" %></div>
+      <div class="span10"><%= text_field_tag "server[manufacturer]",@server_info["server"]["manufacturer"],:class=>"span8",:disabled=>true %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[product_name]","Product Name" %></div>
+      <div class="span10"><%= text_field_tag "server[product_name]",@server_info["server"]["product_name"],:class=>"span8",:disabled=>true %></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[asset_tags]","Asset Tags" %></div>
+      <div class="span10"><%= text_field_tag "server[asset_tags]",@server_info["server"]["asset_tags"],:class=>"span8" %></div>
+    </div>  
+    <div class="row-fluid">
+      <div class="span2"><%= label_tag "server[location]","Location" %></div>
+      <div class="span10"><%= text_field_tag "server[location]",@server_info["server"]["location"],:class=>"span8" %></div>
+    </div>
+  </div>
+</div>
+

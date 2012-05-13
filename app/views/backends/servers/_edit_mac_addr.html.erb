@@ -1,0 +1,27 @@
+<div id="server-mac-addrs" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <table id="server-mac-addr-list" class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>MAC Address</th>
+              <th>Device Name</tH>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["macs"].each do |mac| %>
+              <tr data-mac-id="<%= mac["_id"] %>">
+                <input type="hidden" name="macs[][_id]" value="<%= mac["_id"] %>"/>
+                <input type="hidden" name="macs[][mac_addr]" value="<%= mac["mac_addr"]%>"/>
+                <td data-field-name="mac_addr"><%= mac["mac_addr"] %></td>
+                <td data-field-name="device_name"><%= text_field_tag "macs[][device_name]", mac["device_name"],:class=>"span8" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

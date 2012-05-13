@@ -26,9 +26,17 @@ $(document).ready ->
 			type:"GET"
 			dataType:"html"
 		a.done (data) ->
+			$("#serverlist").dataTable().fnDestroy()
 			$(tbody).children().remove()
 			$(tbody).append(data)
-			show_data($(tbody).children("tr"),$($(e.target).attr("href")))
+			$("#serverlist").dataTable
+				"bDestroy": true
+				"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+				"sPaginationType": "bootstrap"
+				"fnCreatedRow":(nRow,aData,iDataIndex) ->
+					$(nRow).click ->
+						window.location.href = $(this).attr("data-show-url")
+
 		a.fail ->
 			console.log "fail"
 

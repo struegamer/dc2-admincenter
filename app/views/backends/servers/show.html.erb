@@ -1,5 +1,14 @@
 <% content_for :titleinformation do %>
-  Show Details for <%= @server_info["server"]["serial_no"] %> (<%= @server_info["server"]["host"]["hostname"] %>.<%= @server_info["server"]["host"]["domainname"] %>) <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_backends_server_path(@server_info["server"]["_id"],:backend_id=>@dcb.id),:class=>"btn" %>
+  Show Details for <%= @server_info["server"]["serial_no"] %> (<%= @server_info["server"]["host"]["hostname"] %>.<%= @server_info["server"]["host"]["domainname"] %>) 
 <% end %>
-
-<%= render "backends/servers/show" %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5">
+      <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_backends_server_path(@server_info["server"]["_id"],:backend_id=>@dcb.id),:class=>"btn" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    &nbsp;
+  </div>
+</div>
+    <%= render "backends/servers/show" %>

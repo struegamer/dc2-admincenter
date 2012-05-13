@@ -32,6 +32,15 @@ module DcClient
       server
     end
 
+    def update(server_info)
+      Rails::logger::debug("dclient server_id #{server_info}")
+      server_list=@proxy.call("dc2.inventory.servers.find",{"_id"=>server_info["_id"]})
+      server=server_list[0]
+      server["asset_tags"]=server_info["asset_tags"]
+      server["location"]=server_info["location"]
+      @proxy.call("dc2.inventory.servers.update",server)
+    end
+
     def count
       server_list=@proxy.call("dc2.inventory.servers.list")
       server_list.length

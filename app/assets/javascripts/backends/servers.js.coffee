@@ -25,6 +25,7 @@ $(document).ready ->
       list_functions "#server-mac-addr-list","#server-mac-add","mac"
     if ($(e.target).attr("href")=="#server-ribs")
       list_functions "#server-rib-list","#server-rib-add","rib"
-
-
+  #$("#hostTab a[data-toggle='tab']").bind "shown", (e) ->
+  #  if ($(e.target).attr("href")=="#host-classes")
+      #list_functions "#hostclasses-list",
 

@@ -6,7 +6,7 @@
           <div class="well">
             <a data-toggle="collapse" data-target="#server-info" href="#">Server Informations</a>
           </div>
-          <div id="server-info" class="collapse">
+          <div id="server-info" class="collapse in">
             <div class="container-fluid">
               <div class="row-fluid">
                 <div class="span6">
@@ -43,8 +43,8 @@
                 <li><a href="#host-interfaces" data-toggle="tab">Interfaces</a></li>
               </ul>
               <div class="tab-content">
-                <%= render "backends/servers/host_general_info"%>
-                <%= render "backends/servers/host_classes" %>
+                <%= render "backends/servers/edit_host_general_info"%>
+                <%= render "backends/servers/edit_host_classes" %>
                 <%= render "backends/servers/host_interfaces" %>
               </div>
             </div>

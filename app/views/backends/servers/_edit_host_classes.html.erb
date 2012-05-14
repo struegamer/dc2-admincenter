@@ -1,0 +1,29 @@
+<div id="host-classes" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <table id="hostclasses-list" class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <tH>Needs Removal</th>
+              <th>Classname</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["host"]["hostclasses"].each do |hcl| %>
+              <tr>
+                <td><%= check_box_tag "host[hostclasses][][needs_removal]","yes",false %>
+                <td><%= select_tag "host[hostclasses][]",options_for_select(@defclasses,:selected=>hcl) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><input id="hostclasses-add" type="button" value="Add" class="btn pull-right"/></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

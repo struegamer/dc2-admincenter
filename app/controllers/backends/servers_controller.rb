@@ -30,9 +30,14 @@ class Backends::ServersController < ApplicationController
     @dcblist=Dcbackend.all()
     @dcb=Dcbackend.first(:id=>params[:backend_id])
     @kvms=Kvm.all()
+    Rails::logger::debug("Kvm: #{@kvms}")
     dcb_conn=DcClient::Servers.new(@dcb)
+    dcb_conf=DcClient::Configuration.new(@dcb)
     server=dcb_conn.get(params[:id])
     @server_info={"server"=>server}
+    @environments=dcb_conf.environment_names()
+    @defclasses=dcb_conf.defaultclasses_names()
+    Rails::logger::debug("Environments: #{@environments}")
     respond_to do |format| 
       format.html
     end
@@ -45,17 +50,12 @@ class Backends::ServersController < ApplicationController
     server=params[:server]
     macs=params[:macs]
     ribs=params[:ribs]
+    host=params[:host]
     server={
       "_id"=>server["_id"],
       "asset_tags"=>server["asset_tags"],
       "location"=>server["location"]
     }
-    macs.each do |mac|
-      Rails::logger::debug("MAC: #{mac}")
-    end
-    ribs.each do |rib|
-      Rails::logger::debug("RIBs: #{rib}")
-    end
     dcb_conn.update(server,macs,ribs)
     respond_to do |format|
       format.json { render :json => @dcb }

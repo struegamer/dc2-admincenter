@@ -13,4 +13,6 @@
 <div id="rib-type-list" style="display:none;">
   <%= select_tag "ribs[][remote_type]", options_from_collection_for_select(@kvms,"kvm_type","kvm_name") %>
 </div>
- 
+<div id="hostclasses-names-list" style="display:none;">
+  <%= select_tag "host[hostclasses][]",options_for_select(@defclasses) %>
+</div>

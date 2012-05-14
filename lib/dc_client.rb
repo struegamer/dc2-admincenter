@@ -12,6 +12,29 @@ module DcClient
     end
   end
 
+  class Configuration < Connection
+    def initialize(dcb)
+      super(dcb)
+    end
+
+    def environment_names
+      envs=@proxy.call("dc2.configuration.environments.list")
+      environs={}
+      envs.each do |env|
+        environs[env["name"]]=env["name"]
+      end
+      environs
+    end
+    def defaultclasses_names
+      defclasses=@proxy.call("dc2.configuration.defaultclasses.list")
+      dfclass={}
+      defclasses.each do |dcl|
+        dfclass[dcl["classname"]]=dcl["classname"]
+      end
+      dfclass
+    end
+  end
+
   class Servers < Connection
     def initialize(dcb)
       super(dcb)

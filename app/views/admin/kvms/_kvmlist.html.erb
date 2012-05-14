@@ -1,0 +1,23 @@
+<table cellspacing="0" cellpadding="0" class="table table-striped">
+  <thead>
+    <tr>
+      <th><input id="check_all" type="checkbox" name="check_all"/></th>
+      <th>Type</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @kvmlist.each do |kvm| %>
+      <tr url="<%= edit_admin_kvm_path(kvm) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_kvm_path(kvm) %>"/></td>
+        <td class="data-cell"><%= kvm.kvm_type %></td>
+        <td class="data-cell"><%= kvm.kvm_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="kvmbtn" class="btn-group pull-right">
+  <input type="button" name="btn_add" value="Add" class="btn"/>
+  <input type="button" name="btn_refresh" value="Refresh" class="btn"/>
+  <input type="button" name="btn_delete" value="Delete" class="btn"/>
+</div>

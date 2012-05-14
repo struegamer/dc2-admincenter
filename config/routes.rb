@@ -7,6 +7,7 @@ Dc2Admin::Application.routes.draw do
     resources :main
     resources :users
     resources :dcbackends
+    resources :kvms
   end
   match "/admin" => "admin/main#index"
 

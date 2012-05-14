@@ -5,6 +5,7 @@
         <table id="server-mac-addr-list" class="table table-striped" cellspacing="0" cellpadding="0">
           <thead>
             <tr>
+              <th>Needs removal</th>
               <th>MAC Address</th>
               <th>Device Name</tH>
             </tr>
@@ -14,6 +15,7 @@
               <tr data-mac-id="<%= mac["_id"] %>">
                 <input type="hidden" name="macs[][_id]" value="<%= mac["_id"] %>"/>
                 <input type="hidden" name="macs[][mac_addr]" value="<%= mac["mac_addr"]%>"/>
+                <td data-field-name="is_deleted"><%= check_box_tag "macs[][needs_removal]","yes",false,:class=>"span6 input-append" %></td>
                 <td data-field-name="mac_addr"><%= mac["mac_addr"] %></td>
                 <td data-field-name="device_name"><%= text_field_tag "macs[][device_name]", mac["device_name"],:class=>"span6 input-append" %></td>
               </tr>
@@ -21,7 +23,7 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2"><input type="button" class="btn pull-right" value="Add" id="server-mac-add"/></td>
+              <td colspan="3"><input type="button" class="btn pull-right" value="Add" id="server-mac-add"/></td>
             </tr>
           </tfoot>
         </table>

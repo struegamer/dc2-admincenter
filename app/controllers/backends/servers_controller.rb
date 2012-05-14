@@ -41,15 +41,19 @@ class Backends::ServersController < ApplicationController
     @dcblist=Dcbackend.all()
     @dcb=Dcbackend.first(:id => params["backend_id"])
     dcb_conn=DcClient::Servers.new(@dcb)
-    Rails::logger::debug("server_id #{params['server[_id]']}")
-    Rails::logger::debug("Server #{params[:server]}")
-    Rails::logger::debug("MACs #{params[:macs]}")
+    server=params[:server]
+    macs=params[:macs]
+    Rails::logger::debug("Server Params #{server}")
+    Rails::logger::debug("Server_id"+server["_id"])
     server={
-      "_id"=>params[:server[:_id]],
-      "asset_tags"=>params[:server["asset_tags"]],
-      "location"=>params[:server["location"]]
+      "_id"=>server["_id"],
+      "asset_tags"=>server["asset_tags"],
+      "location"=>server["location"]
     }
-    dcb_conn.update(server)
+    macs.each do |mac|
+      Rails::logger::debug("MAC: #{mac}")
+    end
+    dcb_conn.update(server,macs)
     respond_to do |format|
       format.json { render :json => @dcb }
     end

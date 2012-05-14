@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10">
+      <%= form_for [:admin, @kvm], :class=>"well form-vertical" do |f| %>
+        <%= f.label :kvm_type, "Type" %>
+        <%= f.text_field :kvm_type, :class=>"span4", :placeholder => "Short Type Info" %>
+        <%= f.label :kvm_name, "Name" %>
+        <%= f.text_field :kvm_name, :class=>"span4", :placeholder => "Descriptive Name" %>
+      </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span4">
+      <div class="pull-right">
+        <%= f.submit :class=>"btn btn-primary" %> <%= link_to "Cancel", admin_kvms_path, :class => "btn" %>   
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

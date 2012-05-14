@@ -32,13 +32,30 @@ module DcClient
       server
     end
 
-    def update(server_info)
+    def update(server_info,macs)
       Rails::logger::debug("dclient server_id #{server_info}")
       server_list=@proxy.call("dc2.inventory.servers.find",{"_id"=>server_info["_id"]})
       server=server_list[0]
       server["asset_tags"]=server_info["asset_tags"]
       server["location"]=server_info["location"]
       @proxy.call("dc2.inventory.servers.update",server)
+
+      macs.each do |mac|
+        mac["server_id"]=server["_id"]
+        if mac["_id"] != "none"
+          if mac["needs_removal"]=="yes"
+            mac.delete("needs_removal")
+            @proxy.call("dc2.inventory.servers.macaddr.delete",mac)
+          else
+            @proxy.call("dc2.inventory.servers.macaddr.update",mac)
+          end
+        else
+          mac.delete("_id")
+          if mac["mac_addr"]!="" and mac["device_name"]!=""
+            @proxy.call("dc2.inventory.servers.macaddr.add",mac)
+          end
+        end
+      end
     end
 
     def count

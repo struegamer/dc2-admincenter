@@ -1,0 +1,34 @@
+<div id="server-ribs" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <table id="server-rib-list" class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Needs removal</tH>
+              <th>Type</th>
+              <th>IP Address / Hostname</tH>
+            </tr>
+          </thead>
+          <tbody>
+            <% @server_info["server"]["ribs"].each do |rib| %>
+              <tr>
+                <input type="hidden" name="ribs[][_id]" value="<%= rib["_id"] %>"/>
+                <td><%= check_box_tag "ribs[][needs_removal]","yes",false, :class=>"span6 input-append"%></td>
+                <td><%= text_field_tag "ribs[][remote_type]",rib["remote_type"],:class=>"span6 input-append" %></td>
+                <td><%= text_field_tag "ribs[][remote_ip]",rib["remote_ip"],:class=>"span6 input-append" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3"><input type="button" class="btn pull-right" value="Add" id="server-rib-add"/></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

@@ -8,8 +8,11 @@ list_functions = (id,button_add_id,type_of) ->
   $(id+" "+button_add_id).click ->
     if (type_of == "mac") 
       tr_elem=$("<tr><input type='hidden' name='macs[][_id]' value='none'/><td></td><td><input type='text' name='macs[][mac_addr]' value=''/></td><td><input type='text' name='macs[][device_name]' value=''/></td></tr>")
+
     if (type_of == "rib")
-      tr_elem=$("<tr><input type='hidden' name='ribs[][_id]' value='none'/><td></td><td><input type='text' name='ribs[][remote_type]' value''/></td><td><input type='text' name='ribs[][remote_ip]' value''/></td></tr>")
+      select_elem=$("#rib-type-list")
+      console.log select_elem
+      tr_elem=$("<tr><input type='hidden' name='ribs[][_id]' value='none'/><td></td><td>"+$(select_elem).html()+"</td><td><input type='text' name='ribs[][remote_ip]' value''/></td></tr>")
     $(id+" TBODY").append(tr_elem)
 
 $(document).ready ->

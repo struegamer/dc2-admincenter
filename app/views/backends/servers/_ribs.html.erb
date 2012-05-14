@@ -1,19 +1,34 @@
 <div id="server-ribs" class="tab-pane">
   <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span8">
-        <table class="table table-striped" cellspacing="0" cellpadding="0">
-          <thead>
+  <div class="row-fluid">
+    <div class="span8">
+      <table class="table table-striped" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>IP Address / Hostname</tH>
+          </tr>
+        </thead>
+        <tbody>
+          <% @server_info["server"]["ribs"].each do |rib| %>
             <tr>
-              <th>Type</th>
-              <th>IP Address / Hostname</tH>
-            </tr>
-          </thead>
-          <tbody>
-            <% @server_info["server"]["ribs"].each do |rib| %>
-              <tr>
-                <td><%= rib["remote_type"] %></td>
-                <td><%= rib["remote_ip"] %></td>
+              <td>
+                <% 
+                  found=0
+                  for i in 0...@kvms.length 
+                    if @kvms[i].kvm_type.downcase == rib["remote_type"].downcase
+                %>
+                <%=  @kvms[i].kvm_name %>
+                <%  
+                  found=1
+                  break
+                end
+                end 
+                  if found != 1 %>
+                    <%= rib["remote_type"]  %>
+                <% end %>
+              </td>
+              <td><%= rib["remote_ip"] %> <%= link_to "Open ILO", "https://"+rib["remote_ip"]+"/" , :class => "btn", :target => "_blank"%></td>
               </tr>
             <% end %>
           </tbody>

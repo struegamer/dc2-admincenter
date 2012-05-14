@@ -17,6 +17,7 @@ class Backends::ServersController < ApplicationController
     @dcb=Dcbackend.first(:id=>params[:backend_id])
     dcb_conn=DcClient::Servers.new(@dcb)
     server=dcb_conn.get(params[:id])
+    @kvms=Kvm.all()
     Rails::logger::debug(server)
     @server_info={ "server"=> server }
     respond_to do |format|
@@ -28,6 +29,7 @@ class Backends::ServersController < ApplicationController
   def edit
     @dcblist=Dcbackend.all()
     @dcb=Dcbackend.first(:id=>params[:backend_id])
+    @kvms=Kvm.all()
     dcb_conn=DcClient::Servers.new(@dcb)
     server=dcb_conn.get(params[:id])
     @server_info={"server"=>server}
@@ -37,14 +39,12 @@ class Backends::ServersController < ApplicationController
   end
 
   def update
-
     @dcblist=Dcbackend.all()
     @dcb=Dcbackend.first(:id => params["backend_id"])
     dcb_conn=DcClient::Servers.new(@dcb)
     server=params[:server]
     macs=params[:macs]
-    Rails::logger::debug("Server Params #{server}")
-    Rails::logger::debug("Server_id"+server["_id"])
+    ribs=params[:ribs]
     server={
       "_id"=>server["_id"],
       "asset_tags"=>server["asset_tags"],
@@ -53,7 +53,10 @@ class Backends::ServersController < ApplicationController
     macs.each do |mac|
       Rails::logger::debug("MAC: #{mac}")
     end
-    dcb_conn.update(server,macs)
+    ribs.each do |rib|
+      Rails::logger::debug("RIBs: #{rib}")
+    end
+    dcb_conn.update(server,macs,ribs)
     respond_to do |format|
       format.json { render :json => @dcb }
     end

@@ -10,4 +10,11 @@ class StatsController < ApplicationController
       format.json { render :json => @response }
     end
   end
+
+  def kvms
+    kvms=Kvm.all()
+    respond_to do |format|
+      format.json { render :json => kvms }
+    end
+  end
 end

@@ -1,0 +1,2 @@
+class DatactrlsController < ApplicationController
+end

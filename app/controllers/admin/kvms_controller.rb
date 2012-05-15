@@ -56,7 +56,7 @@ class Admin::KvmsController < ApplicationController
     @kvm=Kvm.first(:id => params[:id])
     respond_to do |format|
       if @kvm.destroy
-        format.json { head:no_content }
+        format.json { head :no_content }
         format.html { redirect_to admin_kvms_path }
       end
     end

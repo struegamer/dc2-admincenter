@@ -1,3 +1,6 @@
+<% content_for :extra_head do %>
+  <%= javascript_include_tag "home" %>
+<% end %>
 <div id="datacenters" class="row-fluid">
   <% if @dcbservers -%>
     <div id="datacenters" class="span5">

@@ -16,7 +16,8 @@
 //= require bootstrap/bootstrap.js
 //= require datatable/jquery.dataTables.min.js
 //= require datatable/DT_bootstrap.js
-//= require_tree .
+//
+// require_tree .
 //
 //
 //

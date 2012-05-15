@@ -1,6 +1,9 @@
 <% content_for :titleinformation do %>
   Backend "<%= @dcb.title %>" active
 <% end %>
+<% content_for :extra_head do %>
+  <%= javascript_include_tag "backends/main" %>
+<% end %>
 
 <div id="dc_<%= @dcb.id %>" class="row-fluid">
   <div class="container-fluid">

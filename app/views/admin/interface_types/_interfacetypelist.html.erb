@@ -7,16 +7,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @kvmlist.each do |kvm| %>
-      <tr url="<%= edit_admin_kvm_path(kvm) %>">
-        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_kvm_path(kvm) %>"/></td>
-        <td class="data-cell"><%= kvm.kvm_type %></td>
-        <td class="data-cell"><%= kvm.kvm_name %></td>
+    <% @itypeslist.each do |itype| %>
+      <tr url="<%= edit_admin_interface_type_path(itype) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_interface_type_path(itype) %>"/></td>
+        <td class="data-cell"><%= itype.name %></td>
+        <td class="data-cell"><%= itype.internal_name %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div id="kvmbtn" class="btn-group pull-right">
+<div id="interfacetypebtn" class="btn-group pull-right">
   <button type="button" name="btn_add" class="btn"><i class="icon-plus"></I> Add</button>
   <button type="button" name="btn_refresh" class="btn"><i class="icon-refresh"></I> Refresh</button>
   <button type="button" name="btn_delete" class="btn"><i class="icon-minus"></i> Delete</button>

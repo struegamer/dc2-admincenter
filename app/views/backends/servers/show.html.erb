@@ -1,6 +1,11 @@
 <% content_for :titleinformation do %>
   Show Details for <%= @server_info["server"]["serial_no"] %> (<%= @server_info["server"]["host"]["hostname"] %>.<%= @server_info["server"]["host"]["domainname"] %>) 
 <% end %>
+  <% content_for :extra_head do %>
+    <%= javascript_include_tag "backends/servers" %>
+  <% end %>
+
+
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span5">

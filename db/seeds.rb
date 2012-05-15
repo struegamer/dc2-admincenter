@@ -6,6 +6,28 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if not User.first({username:"sadig"})
-  user=User.create({username: "sadig",password:"test123",is_admin:true})
+if User.all().count <= 0
+  User.create([
+              {username: "admin",password:"admin",firstname:"The Big",lastname:"Administrator",is_admin:true},
+              {username: "user",password:"user",firstname:"The",lastname:"User",is_admin:false}
+  ])
+end
+
+if Kvm.all().count <= 0
+  Kvm.create([
+             {kvm_type:"ILO1",kvm_name:"HP ILO Version 1"},
+             {kvm_type:"ILO2",kvm_name:"HP ILO Version 2"},
+             {kvm_type:"ILO3",kvm_name:"HP ILO Version 3"},
+             {kvm_type:"FSC",kvm_name:"Fujitsu Siemens RIB"}
+  ])
+end
+
+if InterfaceType.all().count <= 0
+  InterfaceType.create([
+                       {name:"Loopback",internal_name:"loopback"},
+                       {name:"Ethernet Device",internal_name:"eth"},
+                       {name:"Active/Passive Bonding",internal_name:"bond_1"},
+                       {name:"Active/Acitve XOR bonding",internal_name:"bond_2"},
+                       {name:"VLAN Interface",internal_name:"vlan"}
+  ])
 end

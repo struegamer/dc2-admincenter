@@ -1,6 +1,9 @@
   <% content_for :titleinformation do %>
     Edit Details for <%= @server_info["server"]["serial_no"] %> (<%= @server_info["server"]["host"]["hostname"] %>.<%= @server_info["server"]["host"]["domainname"] %>)
   <% end %>
+  <% content_for :extra_head do %>
+    <%= javascript_include_tag "backends/servers" %>
+  <% end %>
   <%= form_tag backends_server_path(@server_info["server"]["_id"]),:method=>"put",:class=>"form-horizontal" do %>
 
     <input type="hidden" name="backend_id" value="<%= @dcb.id %>"/>

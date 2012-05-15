@@ -56,7 +56,7 @@ class Backends::ServersController < ApplicationController
       "asset_tags"=>server["asset_tags"],
       "location"=>server["location"]
     }
-    dcb_conn.update(server,macs,ribs)
+    dcb_conn.update(server,macs,ribs,host)
     respond_to do |format|
       format.json { render :json => @dcb }
     end

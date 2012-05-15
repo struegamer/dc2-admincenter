@@ -14,5 +14,10 @@
   <%= select_tag "ribs[][remote_type]", options_from_collection_for_select(@kvms,"kvm_type","kvm_name") %>
 </div>
 <div id="hostclasses-names-list" style="display:none;">
-  <%= select_tag "host[hostclasses][]",options_for_select(@defclasses) %>
+  <table>
+    <tr>
+      <td><%= check_box_tag "host[[needs_removal][]","",false, :onchange=>"$(this).parent('td').parent().remove()" %></tD>
+      <td><%= select_tag "host[hostclasses][]",options_for_select(@defclasses) %></td>
+    </tr>
+</table
 </div>

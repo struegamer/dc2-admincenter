@@ -20,6 +20,9 @@ list_functions = (id,button_add_id,type_of) ->
 
     $(id+" TBODY").append(tr_elem)
 
+
+  
+
 $(document).ready ->
   $(".collapse").collapse
     "toggle":false
@@ -35,4 +38,19 @@ $(document).ready ->
       console.log "hellO"
       list_functions "#hostclasses-list", "#hostclasses-add", "hostclasses"
 
+  $("#host-interfaces tr.collapse.in").each ->
+    $(this).show()
+  $("#host-interfaces tr.collapse").each ->
+    $(this).hide()
 
+  $("#host-interfaces tr.collapse").each ->
+    elem_id=$(this).attr "id"
+    $(this).bind "hide", () ->
+      $("a[data-target='#"+elem_id+"'] I").removeClass("icon-chevron-down")
+      $("a[data-target='#"+elem_id+"'] I").addClass("icon-chevron-right")
+ 
+      $(this).hide()
+    $(this).bind "show", () ->
+      $("a[data-target='#"+elem_id+"'] I").removeClass("icon-chevron-right")
+      $("a[data-target='#"+elem_id+"'] I").addClass("icon-chevron-down")
+      $(this).show()

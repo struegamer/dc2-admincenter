@@ -1,0 +1,68 @@
+<div id="host-interfaces" class="tab-pane">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>INET Type</th>
+              <th>IP Address</th>
+              <th>Netmask</th>
+              <th>Gateway</th>
+              <th>Details</th>
+              <th>IP Interface Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @server_info["server"]["host"]["interfaces"] %>
+            <% @server_info["server"]["host"]["interfaces"].each do |interface| %>
+              <tr>
+                <td><%= interface["name"] %></td>
+                <td>
+                  <% if interface["type"]=="loopback" -%>Loopback<% end %>
+                  <% if interface["type"]=="bond_1" -%>Active/Passive Bonding<% end %>
+                  <% if interface["type"]=="bond_2" -%>Balanced XOR Bonding (Portchannel<% end %>
+                  <% if interface["type"]=="ethernet" -%>Ethernet<% end %>
+                  <% if interface["type"]=="vlan" -%>VLAN<% end %>
+                </td>
+                <td><%= interface["inet"] %></td>
+                <td><%= interface["ip"] %></td>
+                <td><%= interface["netmask"] %></td>
+                <td><%= interface["gateway"] %></td>
+                <td>
+                  <% if interface["type"]=="bond_1" or interface["type"]=="bond_2" -%>
+                    <table class="table table-condensed table-striped">
+                      <thead>
+                        <th>Slaves</th>
+                      </thead>
+                      <tbody>
+                        <% interface["slaves"].split(" ").each do |slave| %>
+                          <tr>
+                            <td><%= slave %></td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  <% end %>
+                  <% if interface["type"]=="vlan" -%>
+                      <span class="label label-info">Raw Device: <%= interface["vlan_raw_device"] %></span>
+                  <% end %>
+                </td>
+                <td>
+                  <% if interface["is_ipv6"] and interface["is_ipv6"]==true -%>
+                    <span class="label label-important">IPv6</span>
+                  <% else %>
+                    <span class="label label-default">IPv4</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

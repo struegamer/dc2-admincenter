@@ -5,13 +5,13 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>Type</th>
               <th>INET Type</th>
               <th>IP Address</th>
               <th>Netmask</th>
               <th>Gateway</th>
-              <th>Details</th>
               <th>IP Interface Type</th>
             </tr>
           </thead>
@@ -19,6 +19,7 @@
             <% if @server_info["server"]["host"]["interfaces"] %>
             <% @server_info["server"]["host"]["interfaces"].each do |interface| %>
               <tr>
+                <td class="action-icon"><a href="#" data-toggle="collapse" data-target="#additional-info-<%= interface["name"] %>"><I class="icon-chevron-right"></I></a></td>
                 <td><%= interface["name"] %></td>
                 <td>
                   <% if interface["type"]=="loopback" -%>Loopback<% end %>
@@ -32,30 +33,60 @@
                 <td><%= interface["netmask"] %></td>
                 <td><%= interface["gateway"] %></td>
                 <td>
-                  <% if interface["type"]=="bond_1" or interface["type"]=="bond_2" -%>
-                    <table class="table table-condensed table-striped">
-                      <thead>
-                        <th>Slaves</th>
-                      </thead>
-                      <tbody>
-                        <% interface["slaves"].split(" ").each do |slave| %>
-                          <tr>
-                            <td><%= slave %></td>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  <% end %>
-                  <% if interface["type"]=="vlan" -%>
-                      <span class="label label-info">Raw Device: <%= interface["vlan_raw_device"] %></span>
-                  <% end %>
-                </td>
-                <td>
                   <% if interface["is_ipv6"] and interface["is_ipv6"]==true -%>
                     <span class="label label-important">IPv6</span>
                   <% else %>
                     <span class="label label-default">IPv4</span>
                   <% end %>
+                </td>
+              </tr>
+              <tr id="additional-info-<%= interface["name"] %>" class="collapse">
+                <td colspan="8">
+                  <table cellpadding="0" cellspacing="0" class="table table-condensed">
+                    <thead>
+                      <tr>
+                        <th>Interface Details</tH>
+                        <th>Pre-Up</th>
+                        <tH>Post-Up</th>
+                        <tH>Pre-Down</th>
+                        <th>Post-down</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <% if interface["type"]=="bond_1" or interface["type"]=="bond_2" -%>
+                            <table class="table table-condensed">
+                              <thead>
+                                <th>Slaves</th>
+                              </thead>
+                              <tbody>
+                                <% interface["slaves"].split(" ").each do |slave| %>
+                                  <tr>
+                                    <td><%= slave %></td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                            </table>
+                          <% end %>
+                          <% if interface["type"]=="vlan" -%>
+                            <span class="label label-info">Raw Device: <%= interface["vlan_raw_device"] %></span>
+                          <% end %>
+                        </td>
+                        <td>
+                            <%= simple_format(interface["pre_up"]) %>
+                        </td>
+                        <td>
+                            <%= simple_format(interface["post_up"]) %>
+                        </td>
+                        <td>
+                            <%= simple_format(interface["pre_down"]) %>
+                        </td>
+                        <td>
+                            <%= simple_format(interface["post_down"]) %>
+                        </td>
+                      </tr>
+                  </table>
                 </td>
               </tr>
             <% end %>

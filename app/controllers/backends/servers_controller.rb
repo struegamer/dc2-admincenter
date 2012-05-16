@@ -30,6 +30,8 @@ class Backends::ServersController < ApplicationController
     @dcblist=Dcbackend.all()
     @dcb=Dcbackend.first(:id=>params[:backend_id])
     @kvms=Kvm.all()
+    @interfacetypes=InterfaceType.all()
+    @inettypes=InetType.all()
     Rails::logger::debug("Kvm: #{@kvms}")
     dcb_conn=DcClient::Servers.new(@dcb)
     dcb_conf=DcClient::Configuration.new(@dcb)

@@ -5,13 +5,13 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>Type</th>
               <th>INET Type</th>
               <th>IP Address</th>
               <th>Netmask</th>
               <th>Gateway</th>
-              <th>Details</th>
               <th>IP Interface Type</th>
             </tr>
           </thead>
@@ -19,43 +19,69 @@
             <% if @server_info["server"]["host"]["interfaces"] %>
             <% @server_info["server"]["host"]["interfaces"].each do |interface| %>
               <tr>
-                <td><%= interface["name"] %></td>
+                <td class="action-icon"><a href="#" data-toggle="collapse" data-target="#additional-info-<%= interface["name"] %>"><I class="icon-chevron-right"></I></a></td>
+                <td><%= text_field_tag "host[interfaces][][name]",interface["name"],:class=>"span12"%> </td>
                 <td>
-                  <% if interface["type"]=="loopback" -%>Loopback<% end %>
-                  <% if interface["type"]=="bond_1" -%>Active/Passive Bonding<% end %>
-                  <% if interface["type"]=="bond_2" -%>Balanced XOR Bonding (Portchannel<% end %>
-                  <% if interface["type"]=="ethernet" -%>Ethernet<% end %>
-                  <% if interface["type"]=="vlan" -%>VLAN<% end %>
+                  <%= select_tag "host[interfaces][][type]",options_from_collection_for_select(@interfacetypes,"internal_name","name",interface["type"]),:class=>"span12" %>
                 </td>
-                <td><%= interface["inet"] %></td>
-                <td><%= interface["ip"] %></td>
-                <td><%= interface["netmask"] %></td>
-                <td><%= interface["gateway"] %></td>
+                <td><%= select_tag "host[interfaces][][inet]", options_from_collection_for_select(@inettypes,"internal_name","name",interface["inet"]),:class=>"span12" %></td>
+                <% if interface["inet"]=="loopback" %>
+                  <td><%= text_field_tag "host[interfaces][][ip]",interface["ip"],:class=>"span12",:disabled=>true %></td>
+                  <td><%= text_field_tag "host[interfaces][][netmask]",interface["netmask"],:class=>"span12",:disabled=>true %></td>
+                  <td><%= text_field_tag "host[interfaces][][gateway]",interface["gateway"],:class=>"span12",:disabled=>true %></td>
+                <% else %>
+                  <td><%= text_field_tag "host[interfaces][][ip]",interface["ip"],:class=>"span12" %></td>
+                  <td><%= text_field_tag "host[interfaces][][netmask]",interface["netmask"],:class=>"span12" %></td>
+                  <td><%= text_field_tag "host[interfaces][][gateway]",interface["gateway"],:class=>"span12" %></td>
+                <% end %>
                 <td>
-                  <% if interface["type"]=="bond_1" or interface["type"]=="bond_2" -%>
-                    <table class="table table-condensed table-striped">
-                      <thead>
-                        <th>Slaves</th>
-                      </thead>
-                      <tbody>
-                        <% interface["slaves"].split(" ").each do |slave| %>
-                          <tr>
-                            <td><%= slave %></td>
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
-                  <% end %>
-                  <% if interface["type"]=="vlan" -%>
-                      <span class="label label-info">Raw Device: <%= interface["vlan_raw_device"] %></span>
+                  <%= label_tag "host[interfaces][][is_ipv6","IPv6 Interface" do %><%= check_box_tag "host[interfaces][][is_ipv6]",true,interface["is_ipv6"] %> IPv6 Interface<%end%>
+                  <% if interface["pre_up"] != nil or interface["pre_down"] != nil or interface["post_up"] != nil or interface["post_down"] != nil or interface["slaves"] != nil %>
+                    <span class="label label-important">Interface Details available</span>
                   <% end %>
                 </td>
-                <td>
-                  <% if interface["is_ipv6"] and interface["is_ipv6"]==true -%>
-                    <span class="label label-important">IPv6</span>
-                  <% else %>
-                    <span class="label label-default">IPv4</span>
-                  <% end %>
+              </tr>
+              <tr id="additional-info-<%= interface["name"] %>" class="collapse">
+                <td></td>
+                <td colspan="7">
+                  <table cellpadding="0" cellspacing="0" class="table table-condensed">
+                    <thead>
+                      <tr>
+                        <th>Interface Details</tH>
+                        <th>Pre-Up</th>
+                        <tH>Post-Up</th>
+                        <tH>Pre-Down</th>
+                        <th>Post-down</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <% if interface["type"]=="bond_1" or interface["type"]=="bond_2" -%>
+                            <div id="slavelist-<%= interface["name"] %>" class="interface-slaves">
+                              <% interface["slaves"].split(" ").each do |slave| %>
+                                <%= label_tag "host[interfaces][][slaves][#{slave}]" do %><%= check_box_tag "host[interfaces][][slaves][#{slave}]",slave,true %> <%= slave %><%end%>
+                              <% end %>
+                            </div>
+                          <% end %>
+                          <% if interface["type"]=="vlan" -%>
+                            <span class="label label-info">Raw Device: <%= interface["vlan_raw_device"] %></span>
+                          <% end %>
+                        </td>
+                        <td>
+                          <%= text_area_tag "host[interfaces][][pre_up]",interface["pre_up"],:rows=>10,:cols=>72,:class=>"span12" %>
+                        </td>
+                        <td>
+                          <%= text_area_tag "host[interfaces][][post_up]",interface["post_up"],:rows=>10,:cols=>72,:class=>"span12" %>
+                        </td>
+                        <td>
+                            <%= text_area_tag "host[interfaces][][pre_down]",interface["pre_down"],:rows=>10,:cols=>72,:class=>"span12" %>
+                        </td>
+                        <td>
+                          <%= text_area_tag "host[interfaces][][post_down]",interface["post_down"],:rows=>10,:cols=>72,:class=>"span12" %>
+                        </td>
+                      </tr>
+                  </table>
                 </td>
               </tr>
             <% end %>

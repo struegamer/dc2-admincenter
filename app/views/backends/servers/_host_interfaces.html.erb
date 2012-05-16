@@ -38,10 +38,15 @@
                   <% else %>
                     <span class="label label-default">IPv4</span>
                   <% end %>
+                  <% if interface["pre_up"] != nil or interface["pre_down"] != nil or interface["post_up"] != nil or interface["post_down"] != nil or interface["slaves"] != nil %>
+                    <span class="label label-important">Interface Details available</span>
+                  <% end %>
+
                 </td>
               </tr>
               <tr id="additional-info-<%= interface["name"] %>" class="collapse">
-                <td colspan="8">
+                <td></td>
+                <td colspan="7">
                   <table cellpadding="0" cellspacing="0" class="table table-condensed">
                     <thead>
                       <tr>

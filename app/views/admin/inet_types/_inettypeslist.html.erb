@@ -1,0 +1,23 @@
+<table cellspacing="0" cellpadding="0" class="table table-striped">
+  <thead>
+    <tr>
+      <th><input id="check_all" type="checkbox" name="check_all"/></th>
+      <th>Type</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inettypeslist.each do |inettype| %>
+      <tr url="<%= edit_admin_inet_type_path(inettype) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_inet_type_path(inettype) %>"/></td>
+        <td class="data-cell"><%= inettype.name %></td>
+        <td class="data-cell"><%= inettype.internal_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="inettypebtn" class="btn-group pull-right">
+  <button type="button" name="btn_add" class="btn"><i class="icon-plus"></I> Add</button>
+  <button type="button" name="btn_refresh" class="btn"><i class="icon-refresh"></I> Refresh</button>
+  <button type="button" name="btn_delete" class="btn"><i class="icon-minus"></i> Delete</button>
+</div>

@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div class="span12">
+    <%= form_for [:admin, @inettype], :class=>"well form-vertical" do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, :class=>"span12", :placeholder => "Name" %>
+    <%= f.label :internal_name, "Internal Name" %>
+    <%= f.text_field :internal_name, :class=>"span12", :placeholder => "Internal Name" %>
+  </div>
+</div>
+<div class="pull-right">
+  <%= f.button :type=>"submit", :class=>"btn btn-primary" %> <%= link_to "Cancel", admin_inet_types_path, :class => "btn" %>
+</div>
+<% end %>

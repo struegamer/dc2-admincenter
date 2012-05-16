@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  $("#check_all").click ->
+  $("#check_al").click ->
     if this.checked == true
       $(".del_check").each ->
         this.checked=true
@@ -11,16 +11,16 @@ $(document).ready ->
       $(".del_check").each ->
         this.checked=false
 
-  create_buttonbar "#interfacetypebtn",
-    add_url:"/admin/interface_types/new"
-    refresh_url:"/admin/interface_types"
-    delete_func: delete_itypes
+  create_buttonbar "#inettypebtn",
+    add_url:"/admin/inet_types/new",
+    refresh_url:"/admin/inet_types",
+    delete_func: delete_inettypes
 
-  $("#interfacetypelist TABLE TBODY TR").each ->
+  $("#inettypelist TABLE TBODY TR").each ->
     $(this).children("TD.data-cell").click ->
       window.location.href=$(this).parent().attr "url"
 
-delete_itypes = () ->
+delete_inettypes = () ->
   $(".del_check").each ->
     if this.checked == true
       a=$.ajax
@@ -28,9 +28,6 @@ delete_itypes = () ->
         type:"delete"
         dataType:"json"
       a.done ->
-        window.location.href="/admin/interface_types"
-
-      
-
+        window.location.href = "/admin/inet_types"
 
 

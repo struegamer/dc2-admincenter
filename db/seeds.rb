@@ -31,3 +31,12 @@ if InterfaceType.all().count <= 0
                        {name:"VLAN Interface",internal_name:"vlan"}
   ])
 end
+
+if InetType.all().count <= 0
+  InetType.create([
+                  {name:"Loopback Configuration",internal_name:"loopback"},
+                  {name:"Static Configuration",internal_name:"static"},
+                  {name:"Manual Configuration",internal_name:"manual"},
+                  {name:"DHCP Configuration",internal_name:"dhcp"}
+  ])
+end

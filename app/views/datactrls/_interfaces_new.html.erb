@@ -1,0 +1,36 @@
+    <tr>
+      <td class="action-icon"><I class="icon-chevron-down"></I></td>
+      <td><%= text_field_tag "host[interfaces][][name]","",:placeholder=>"Interface Name",:class=>"span12 interface-name"%> </td>
+      <td><%= select_tag "host[interfaces][][type]",options_from_collection_for_select(@interfacetypes,"internal_name","name"),:class=>"span12 interface-types" %></td>
+      <td><%= select_tag "host[interfaces][][inet]", options_from_collection_for_select(@inettypes,"internal_name","name"),:class=>"span12" %></td>
+      <td><%= text_field_tag "host[interfaces][][ip]","",:placeholder=>"0.0.0.0",:class=>"span12" %></td>
+      <td><%= text_field_tag "host[interfaces][][netmask]","",:placeholder=>"255.255.255.255",:class=>"span12"%></td>
+      <td><%= text_field_tag "host[interfaces][][gateway]","",:placeholder=>"0.0.0.0",:class=>"span12" %></td>
+      <td><%= label_tag "host[interfaces][][is_ipv6","IPv6 Interface" do %><%= check_box_tag "host[interfaces][][is_ipv6]",true,false%> IPv6 Interface<%end%></tD>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="7">
+        <table cellpadding="0" cellspacing="0" class="table table-condensed">
+          <thead>
+            <tr>
+              <tH>Interface Details</th>
+              <tH>Pre-up</th>
+              <tH>Post-up</th>
+              <th>Pre-down</th>
+              <tH>Post-down</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="interface-details">Interface Details</td>
+              <td><%= text_area_tag "host[interfaces][][pre_up]","",:rows=>10,:cols=>72,:class=>"span12" %></td>
+              <td><%= text_area_tag "host[interfaces][][post_up]","",:rows=>10,:cols=>72,:class=>"span12" %></td>
+              <td><%= text_area_tag "host[interfaces][][pre_down]","",:rows=>10,:cols=>72,:class=>"span12" %></td>
+              <td><%= text_area_tag "host[interfaces][][post_down]","",:rows=>10,:cols=>72,:class=>"span12" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+ 

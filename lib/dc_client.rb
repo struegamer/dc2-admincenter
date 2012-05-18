@@ -105,6 +105,15 @@ module DcClient
       host["hostclasses"]=hostclasses
       @proxy.call("dc2.inventory.hosts.update",host)
     end
+
+    def get_mac_device_names(server_id)
+      mac_list=@proxy.call("dc2.inventory.servers.macaddr.list",{"server_id"=>server_id})
+      macs=[]
+      mac_list.each do |mac|
+        macs.append(mac["device_name"])
+      end
+      macs
+    end
     def count
       server_list=@proxy.call("dc2.inventory.servers.list")
       server_list.length

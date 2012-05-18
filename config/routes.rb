@@ -13,7 +13,16 @@ Dc2Admin::Application.routes.draw do
   end
   match "/admin" => "admin/main#index"
 
-  resource :stats
+
+  resources :datactrls do
+    collection do
+      get "interfaces_new"
+    end
+  end
+
+  # match "/datactrls/interfaces_new" => "datactrls#interfaces_new"
+
+  resources :stats
   match "/stats/servers/:backend_id" => "stats#servers"
   match "/stats/kvms" => "stats#kvms"
 

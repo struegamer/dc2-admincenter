@@ -20,8 +20,8 @@ list_functions = (id,button_add_id,type_of) ->
 
     $(id+" TBODY").append(tr_elem)
 
-
-  
+change_it = () ->
+  console.log this
 
 $(document).ready ->
   $(".collapse").collapse
@@ -54,3 +54,14 @@ $(document).ready ->
       $("a[data-target='#"+elem_id+"'] I").removeClass("icon-chevron-right")
       $("a[data-target='#"+elem_id+"'] I").addClass("icon-chevron-down")
       $(this).show()
+
+  $("#host-interfaces button#interfaces-add").click (event) ->
+    event.preventDefault()
+    a=$.ajax
+      "url":"/datactrls/interfaces_new"
+      "type":"get"
+    a.done (e) ->
+      $("#host-interfaces-main-list TBODY#main-interface-body").append(e)
+      $("select.interface-types").bind "change", ->
+        # TODO: add new interface detail snippet
+        console.log $(this).val()

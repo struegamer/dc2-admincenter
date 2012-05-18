@@ -39,7 +39,7 @@ class Backends::ServersController < ApplicationController
     @server_info={"server"=>server}
     @environments=dcb_conf.environment_names()
     @defclasses=dcb_conf.defaultclasses_names()
-    Rails::logger::debug("Environments: #{@environments}")
+    @device_names=dcb_conn.get_mac_device_names(params[:id])
     respond_to do |format| 
       format.html
     end
@@ -58,7 +58,9 @@ class Backends::ServersController < ApplicationController
       "asset_tags"=>server["asset_tags"],
       "location"=>server["location"]
     }
-    dcb_conn.update(server,macs,ribs,host)
+    Rails::logger::debug("")
+    Rails::logger::debug("Interfaces: #{host['interfaces']}")
+    #dcb_conn.update(server,macs,ribs,host)
     respond_to do |format|
       format.json { render :json => @dcb }
     end

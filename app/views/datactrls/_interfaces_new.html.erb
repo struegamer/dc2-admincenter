@@ -1,4 +1,4 @@
-    <tr>
+    <tr class="interface-row">
       <td class="action-icon"><I class="icon-chevron-down"></I></td>
       <td><%= text_field_tag "host[interfaces][][name]","",:placeholder=>"Interface Name",:class=>"span12 interface-name"%> </td>
       <td><%= select_tag "host[interfaces][][type]",options_from_collection_for_select(@interfacetypes,"internal_name","name"),:class=>"span12 interface-types" %></td>

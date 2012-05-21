@@ -18,6 +18,9 @@ Dc2Admin::Application.routes.draw do
     collection do
       get "interfaces_new"
     end
+    collection do
+      get "get_hw_interfaces"
+    end
   end
 
   # match "/datactrls/interfaces_new" => "datactrls#interfaces_new"

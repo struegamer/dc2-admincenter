@@ -18,7 +18,7 @@
           <tbody id="main-interface-body">
             <% if @server_info["server"]["host"]["interfaces"] %>
             <% @server_info["server"]["host"]["interfaces"].each do |interface| %>
-              <tr>
+              <tr class="interface-row">
                 <td class="action-icon"><a href="#" data-toggle="collapse" data-target="#additional-info-<%= interface["name"] %>"><I class="icon-chevron-right"></I></a></td>
                 <td><%= text_field_tag "host[interfaces][][name]",interface["name"],:class=>"span12"%> </td>
                 <td>

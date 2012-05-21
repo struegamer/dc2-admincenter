@@ -64,4 +64,30 @@ $(document).ready ->
       $("#host-interfaces-main-list TBODY#main-interface-body").append(e)
       $("select.interface-types").bind "change", ->
         # TODO: add new interface detail snippet
-        console.log $(this).val()
+        console.log $("input[name='backend_id']").val()
+        console.log $("input[name='server[_id]']").val()
+        $("td#interface-details").children().remove()
+        if $(this).val() == "bond_1" or $(this).val() == "bond_2"
+          b=$.ajax
+            "url":"/datactrls/get_hw_interfaces"
+            "type":"get"
+            "data":
+              "backend_id":$("input[name='backend_id']").val()
+              "server_id":$("input[name='server[_id]']").val()
+          b.done (e) ->
+            console.log e
+            $("td#interface-details").html(e)
+            $("td#interface-details").children().show()
+          return 
+        if $(this).val() == "vlan"
+          console.log "vlan interface"
+          count=0
+          interfaces=[]
+          $("#host-interfaces-main-list TBODY#main-interface-body TR.interface-row").each ->
+            iface_name=$(this).children("td").children("input[name='host[interfaces][][name]']")
+            iface_type=$(this).children("td").children("select[name='host[interfaces][][type]']")
+            if iface_name.val()!= "" and iface_type.val() != "vlan" and iface_type.val() != "loopback"
+              console.log "no vlan"
+              interfaces[count]=iface_name.val()
+              count++
+          console.log interfaces

@@ -90,4 +90,8 @@ $(document).ready ->
               console.log "no vlan"
               interfaces[count]=iface_name.val()
               count++
-          console.log interfaces
+          vlan_raw_device=$("<select name='host[interfaces][][vlan_raw_device]'></select>")
+          for device in interfaces
+            vlan_raw_device.append("<option value='"+device+"'>"+device+"</option>")
+          $("td#interface-details").append(vlan_raw_device)
+

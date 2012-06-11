@@ -103,6 +103,13 @@ module DcClient
         end
       end
       host["hostclasses"]=hostclasses
+      interfaces=[]
+      host['interfaces'].each do |interface|
+        if interface['name']!=''
+          interfaces.append(interface)
+        end
+      end
+      host['interfaces']=interfaces
       @proxy.call("dc2.inventory.hosts.update",host)
     end
 

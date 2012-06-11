@@ -60,7 +60,7 @@ class Backends::ServersController < ApplicationController
     }
     Rails::logger::debug("")
     Rails::logger::debug("Interfaces: #{host['interfaces']}")
-    #dcb_conn.update(server,macs,ribs,host)
+    dcb_conn.update(server,macs,ribs,host)
     respond_to do |format|
       format.json { render :json => @dcb }
     end

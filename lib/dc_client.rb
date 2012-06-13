@@ -105,7 +105,7 @@ module DcClient
       host["hostclasses"]=hostclasses
       interfaces=[]
       host['interfaces'].each do |interface|
-        if interface['name']!=''
+        if interface['name']!='' || interface['name']!=null
           interfaces.append(interface)
         end
       end

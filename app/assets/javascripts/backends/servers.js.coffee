@@ -55,6 +55,11 @@ $(document).ready ->
       $("a[data-target='#"+elem_id+"'] I").addClass("icon-chevron-down")
       $(this).show()
 
+  $('#host-interfaces button.interface-remove').click (event) ->
+    console.log 'hello interface remove click'
+    $(this).parent().parent().remove()
+    return false
+
   $("#host-interfaces button#interfaces-add").click (event) ->
     event.preventDefault()
     a=$.ajax

@@ -7,24 +7,32 @@
 
 <div id="dc_<%= @dcb.id %>" class="row-fluid">
   <div class="container-fluid">
-  <div class="span12">
-    <ul class="nav nav-tabs" id="inventory">
-      <LI><a href="#servers" data-toggle="tab">Servers</a></LI>
-      <LI><a href="#hosts" data-toggle="tab">Hosts</a></LI>
-    </UL>
-    <div class="tab-content">
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span12">
-            <div class="tab-pane" id="servers" data-dc-record="<%= url_for :controller => "/backends/servers", :backend_id => @dcb.id %>">
-              <%= render "backends/list_servers" %>
+    <div class="span12">
+      <ul class="nav nav-tabs" id="inventory">
+        <LI><a href="#servers" data-toggle="tab">Servers</a></LI>
+        <LI><a href="#hosts" data-toggle="tab">Hosts</a></LI>
+      </UL>
+      <div class="tab-content">
+        <div class="tab-pane active" id="servers" data-dc-record="<%= url_for :controller => "/backends/servers", :backend_id => @dcb.id %>">
+          <div class="container-fluid">
+            <div class="row-fluid">
+              <div class="span12">
+                <%= render "backends/list_servers" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="hosts" data-dc-record="<%= url_for :controller => '/backends/hosts', :backend_id => @dcb.id %>">
+          <div class="container-fluid">
+            <div class="row-fluid">
+              <div class="span12">
+                <%= render 'backends/list_hosts' %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="tab-pane" id="hosts" data-dc-record="<%= @dcb.id %>"></div>
     </div>
   </div>
-</div>
 </div>
 

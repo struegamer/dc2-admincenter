@@ -5,41 +5,62 @@
 #
 #
 tabify = (id) -> 
-	$(id + " a[data-toggle='tab']").click (e) ->
-		e.preventDefault();
-		$(this).tab("show")
+  $(id + " a[data-toggle='tab']").click (e) ->
+    e.preventDefault()
+    $(this).tab("show")
 
 show_data = (elem,target) ->
-	console.log target
-	$(elem).each ->
-		$(this).click ->
-			window.location.href=$(this).attr "data-show-url"
+  console.log target
+  $(elem).each ->
+    $(this).click ->
+      window.location.href=$(this).attr "data-show-url"
 
 $(document).ready ->
-	tabify "#inventory"
-	$('#inventory a[data-toggle="tab"]').bind 'show', (e) ->
-		console.log $(e.target).attr "href"
-		dcb_id=$($(e.target).attr "href").attr "data-dc-record"
-		tbody=$("#serverlist TBODY")
-		a=$.ajax 
-			url:dcb_id
-			type:"GET"
-			dataType:"html"
-		a.done (data) ->
-			$("#serverlist").dataTable().fnDestroy()
-			$(tbody).children().remove()
-			$(tbody).append(data)
-			$("#serverlist").dataTable
-				"bDestroy": true
-				"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
-				"sPaginationType": "bootstrap"
-				"fnCreatedRow":(nRow,aData,iDataIndex) ->
-					$(nRow).click ->
-						window.location.href = $(this).attr("data-show-url")
+  tabify "#inventory"
+  $('#inventory a[data-toggle="tab"]').bind 'show', (e) ->
+    console.log $(e.target).attr "href"
+    dcb_id=$($(e.target).attr "href").attr "data-dc-record"
+    if $(e.target).attr('href') == '#servers'
+      tbody=$("#serverlist TBODY")
+      a=$.ajax
+        url:dcb_id
+        type:"GET"
+        dataType:"html"
+      a.done (data) ->
+        $("#serverlist").dataTable().fnDestroy()
+        $(tbody).children().remove()
+        $(tbody).append(data)
+        $("#serverlist").dataTable
+          "bDestroy": true
+          "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+          "sPaginationType": "bootstrap"
+          "fnCreatedRow":(nRow,aData,iDataIndex) ->
+            $(nRow).click ->
+              window.location.href = $(this).attr("data-show-url")
+      a.fail ->
+        console.log 'fail'
+      return
+    if $(e.target).attr('href') == '#hosts'
+      tbody=$('#hostlist TBODY')
+      a=$.ajax
+        url:dcb_id
+        type:'GET'
+        dataType:'html'
+      a.done (data) ->
+        $('#hostlist').dataTable().fnDestroy()
+        $(tbody).children().remove()
+        $(tbody).append(data)
+        $('#hostlist').dataTable
+          'bDestroy':true
+          'sDom':"<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+          'sPaginationType':'bootstrap'
+          'fnCreatedRow':(nRow,aData,iDataIndex) ->
+            $(nRow).click ->
+              window.location.href = $(this).attr('data-show-url')
+      a.fail ->
+        console.log "fail"
+      return
 
-		a.fail ->
-			console.log "fail"
-
-	$("#inventory a[data-toggle='tab']:first").tab("show")
+  $("#inventory a[data-toggle='tab']:first").tab("show")
 
 

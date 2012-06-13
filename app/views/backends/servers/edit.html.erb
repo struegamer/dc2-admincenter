@@ -5,14 +5,21 @@
     <%= javascript_include_tag "backends/servers" %>
   <% end %>
   <%= form_tag backends_server_path(@server_info["server"]["_id"]),:method=>"put",:class=>"form-horizontal" do %>
-
-    <input type="hidden" name="backend_id" value="<%= @dcb.id %>"/>
-    <%= button_tag :type => "submit", :class=>"btn" do %>
-        <i class="icon-ok"></i> Update
-    <% end %>
- 
-  <%= render "backends/servers/edit" %>
-<% end%>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span5">
+          <input type="hidden" name="backend_id" value="<%= @dcb.id %>"/>
+          <%= button_tag :type => "submit", :class=>"btn" do %>
+            <i class="icon-ok"></i> Update
+          <% end %>
+        </div>
+      </div>
+      <div class="row-fluid">
+        &nbsp;
+      </div>
+    </div>
+    <%= render "backends/servers/edit" %>
+  <% end%>
 <div id="rib-type-list" style="display:none;">
   <%= select_tag "ribs[][remote_type]", options_from_collection_for_select(@kvms,"kvm_type","kvm_name") %>
 </div>

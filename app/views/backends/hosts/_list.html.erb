@@ -1,0 +1,10 @@
+<% @hosts["hostlist"].each do |host| %>
+  <tr data-show-url="<%= url_for backends_server_path(host["server_id"], :backend_id=> @dcb.id) %>">
+    <td><% if host["hostname"]=='' || host['hostname']==nil %>NotNamed<% else %><%= host['hostname'] %><% end %>
+    <td><%= host["domainname"] %></td>
+    <td><%= host["environments"] %></td>
+  </tr>
+  <%= host %>
+<% end %>
+
+

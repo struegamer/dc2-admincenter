@@ -11,6 +11,16 @@ class StatsController < ApplicationController
     end
   end
 
+  def hosts
+    backend_id=params[:backend_id]
+    dcb=Dcbackend.first({"_id" => backend_id })
+    proxy=DcClient::Hosts.new(dcb)
+    @response={"count" => proxy.count}
+    respond_to do |format|
+      format.json { render :json => @response }
+    end
+  end
+
   def kvms
     kvms=Kvm.all()
     respond_to do |format|

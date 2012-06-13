@@ -144,5 +144,12 @@ module DcClient
       end
     end
   end
+
+  class Hosts < Connection 
+    def count
+      host_list = @proxy.call("dc2.inventory.hosts.list")
+      host_list.length
+    end
+  end
 end
 

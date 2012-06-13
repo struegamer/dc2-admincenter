@@ -27,6 +27,7 @@ Dc2Admin::Application.routes.draw do
 
   resources :stats
   match "/stats/servers/:backend_id" => "stats#servers"
+  match "/stats/hosts/:backend_id" => "stats#hosts"
   match "/stats/kvms" => "stats#kvms"
 
   resources :sessions

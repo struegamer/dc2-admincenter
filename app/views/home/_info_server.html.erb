@@ -14,7 +14,7 @@
           <tr data-url="<%= url_for :controller => "/backends/main",:backend_id => dcb["id"] %>" >
             <td><%= dcb["title"] %></td>
             <td><div id="<%= dcb["id"] %>" class="stats_req" data-stats="servers"></div></tD>
-            <td>TBD</td>
+            <td><div id='<%= dcb['id'] %>' class="stats_req" data-stats="hosts"></div></td>
           </tr>
         </tbody>
       <% end %>

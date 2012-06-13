@@ -57,6 +57,7 @@ $(document).ready ->
 
   $('#host-interfaces button.interface-remove').click (event) ->
     console.log 'hello interface remove click'
+    $(this).parent().parent().next().remove()
     $(this).parent().parent().remove()
     return false
 

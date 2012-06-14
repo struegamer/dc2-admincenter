@@ -11,6 +11,7 @@
       <ul class="nav nav-tabs" id="inventory">
         <LI><a href="#servers" data-toggle="tab">Servers</a></LI>
         <LI><a href="#hosts" data-toggle="tab">Hosts</a></LI>
+        <LI><a href="#deployment-control" data-toggle="tab">Deployment Control</a></LI>
       </UL>
       <div class="tab-content">
         <div class="tab-pane active" id="servers" data-dc-record="<%= url_for :controller => "/backends/servers", :backend_id => @dcb.id %>">
@@ -27,6 +28,14 @@
             <div class="row-fluid">
               <div class="span12">
                 <%= render 'backends/list_hosts' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id='deployment-control' data-dc-record="<%= url_for :controller => '/backends/hosts', :backend_id => @dcb.id %>">
+          <div class="container-fluid'>
+            <div class="row-fluid">
+              <div class="span12">
               </div>
             </div>
           </div>

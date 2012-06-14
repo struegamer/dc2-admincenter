@@ -1,4 +1,5 @@
 development:
+        dbname: '#myapp-development'
         ldap_host: 
         ldap_use_tls: true
         ldap_ca_file: config/certificates/ca.crt

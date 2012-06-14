@@ -1,5 +1,8 @@
 MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
-MongoMapper.database = "#myapp-#{Rails.env}"
+if defined? Dc2AdminConfig
+# MongoMapper.database = "#myapp-#{Rails.env}"
+  MongoMapper.database = Dc2AdminConfig['dbname']
+end
 
 if defined?(PhusionPassenger)
    PhusionPassenger.on_event(:starting_worker_process) do |forked|

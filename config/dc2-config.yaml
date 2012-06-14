@@ -1,0 +1,7 @@
+development:
+        ldap_host: 
+        ldap_use_tls: true
+        ldap_ca_file: config/certificates/ca.crt
+        ldap_base: dc=expertcity,dc=com
+        ldap_base_passwd: cn=users,cn=accounts,dc=expertcity,dc=com
+        ldap_base_group: cn=groups,cn=accounts,dc=expertcity,dc=com

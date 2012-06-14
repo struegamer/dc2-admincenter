@@ -32,10 +32,11 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id='deployment-control' data-dc-record="<%= url_for :controller => '/backends/hosts', :backend_id => @dcb.id %>">
-          <div class="container-fluid'>
+        <div class="tab-pane" id='deployment-control' data-dc-record="<%= url_for :controller => '/backends/deployments', :backend_id => @dcb.id %>">
+          <div class="container-fluid">
             <div class="row-fluid">
               <div class="span12">
+                <%= render 'backends/list_deploy_control' %>
               </div>
             </div>
           </div>

@@ -60,6 +60,27 @@ $(document).ready ->
       a.fail ->
         console.log "fail"
       return
+    if $(e.target).attr('href') == '#deployment-control'
+      tbody=$('#deploymentlist TBODY')
+      a=$.ajax
+        url:dcb_id
+        type:'GET'
+        dataType:'html'
+      a.done (data) ->
+        $('#deploymentlist').dataTable().fnDestroy()
+        $(tbody).children().remove()
+        $(tbody).append(data)
+        $('#deploymentlist').dataTable
+          'bDestroy':true
+          'sDom':"<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+          'sPaginationType':'bootstrap'
+          'fnCreatedRow':(nRow,aData,iDataIndex) ->
+            $(nRow).click ->
+              window.location.href = $(this).attr('data-show-url')
+      a.fail ->
+        console.log "fail"
+      return
+          
 
   $("#inventory a[data-toggle='tab']:first").tab("show")
 

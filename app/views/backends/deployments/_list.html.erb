@@ -1,0 +1,7 @@
+<% @installstates['islist'].each do |isstate| %>
+  <tr data-show-url="<%= url_for backends_deployment_path(isstate['_id'], :backend_id => @dcb.id) %>">
+    <td><%= isstate['hostname'] %></td>
+    <td><%= isstate['status'] %></td>
+    <td><%= isstate['progress'] %></td>
+  </tr>
+<% end %>

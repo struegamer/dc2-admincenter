@@ -164,8 +164,16 @@ module DcClient
       host_list = self.list
       host_list.length
     end
-
-
+  end
+  class Installstate < Connection
+    def list 
+      is_list=@proxy.call('dc2.deployment.installstate.list')
+      is_list
+    end
+    def count
+      is_list=self.list
+      is_list.length
+    end
   end
 end
 

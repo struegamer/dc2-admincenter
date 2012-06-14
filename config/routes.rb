@@ -38,6 +38,7 @@ Dc2Admin::Application.routes.draw do
     resources :main
     resources :servers
     resources :hosts
+    resources :deployments
   end
 
 

@@ -1,0 +1,2 @@
+module AuthLdap
+end

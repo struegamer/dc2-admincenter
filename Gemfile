@@ -6,6 +6,7 @@ gem "mongo"
 gem "bson_ext"
 gem "mongo_mapper"
 gem "mongo_session_store-rails3"
+gem 'net-ldap'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

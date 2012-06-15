@@ -27,4 +27,18 @@ class StatsController < ApplicationController
       format.json { render :json => kvms }
     end
   end
+  
+  def deployment
+    dcb=Dcbackend.first({'_id' => params[:backend_id]})
+    proxy=DcClient::Installstate.new(dcb)
+    if params['value'] == 'localboot'
+      count=proxy.count_lb
+    end
+    if params['value'] == 'deploy'
+      count=proxy.count_deploy
+    end
+    respond_to do |format|
+      format.json { render :json => { 'count'=>count } }
+    end
+  end
 end

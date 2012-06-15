@@ -174,6 +174,14 @@ module DcClient
       is_list=self.list
       is_list.length
     end
+    def count_lb
+      lb_list=@proxy.call('dc2.deployment.installstate.list',{'status'=> 'localboot'})
+      lb_list.length
+    end
+    def count_deploy
+      lb_list=@proxy.call('dc2.deployment.installstate.list',{'status'=> 'deploy'})
+      lb_list.length
+    end
     def update(id,status)
       entry=@proxy.call('dc2.deployment.installstate.get',{'_id'=>id})
       entry['status']=status

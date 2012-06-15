@@ -7,6 +7,7 @@
           <th>Datacenter</th>
           <th>No. of Servers</tH>
           <th>Number of Hosts</th>
+          <th>Deployment State</th>
         </tr>
       </thead>
       <% @dcbservers.each do |dcb| %>
@@ -15,6 +16,10 @@
             <td><%= dcb["title"] %></td>
             <td><div id="<%= dcb["id"] %>" class="stats_req" data-stats="servers"></div></tD>
             <td><div id='<%= dcb['id'] %>' class="stats_req" data-stats="hosts"></div></td>
+            <td>
+              <div id='<%= dcb['id'] %>' class="install_req" data-stats="deployment" data-stats-value="localboot"></div>
+              <div id='<%= dcb['id'] %>' class="install_req" data-stats="deployment" data-stats-value="deploy"></div>
+            </td>
           </tr>
         </tbody>
       <% end %>

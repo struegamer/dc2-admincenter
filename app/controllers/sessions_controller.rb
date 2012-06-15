@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to("/")
+    redirect_to("/", :notice => "You are now logout")
   end
 end
 

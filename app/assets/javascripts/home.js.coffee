@@ -17,5 +17,6 @@ $(document).ready ->
 	$("#datacenters tbody tr").each ->
 		$(this).css "cursor","pointer"
 		$(this).click -> 
-			window.location.href = $(this).attr "data-url"
+                  window.location.href = $(this).attr "data-url"
 
+        $(".alert").alert()

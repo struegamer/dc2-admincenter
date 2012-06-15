@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
         return 
       end
       redirect_to("/")
+    else
+      redirect_to('/', :flash => { :error => 'Username and/or Password are not correct.' })
     end
   end
 

@@ -1,7 +1,7 @@
 <% @installstates['islist'].each do |isstate| %>
-  <tr data-show-url="<%= url_for backends_deployment_path(isstate['_id'], :backend_id => @dcb.id) %>">
+  <tr data-show-url="<%= url_for backends_deployment_path(isstate['_id']) %>">
     <td><%= isstate['hostname'] %></td>
-    <td><%= isstate['status'] %></td>
+    <td data-dcb-id="<%= @dcb.id %>" data-entry-id="<%= isstate['_id'] %>"><%= select_tag 'installstatus', options_for_select(@deployment_states, :selected => isstate['status']),:class=>'installstatus' %></td>
     <td><%= isstate['progress'] %></td>
   </tr>
 <% end %>

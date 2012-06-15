@@ -74,9 +74,20 @@ $(document).ready ->
           'bDestroy':true
           'sDom':"<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
           'sPaginationType':'bootstrap'
-          'fnCreatedRow':(nRow,aData,iDataIndex) ->
-            $(nRow).click ->
-              window.location.href = $(this).attr('data-show-url')
+        $('select.installstatus').change (e) ->
+          console.log $(e.target).val()
+          console.log $(e.target).parent().attr('data-entry-id')
+          a=$.ajax
+            url:$(e.target).parent().parent().attr('data-show-url')+'.json'
+            contentType:'application/json'
+            type:'PUT'
+            dataType:'json'
+            data:JSON.stringify({backend_id: $(e.target).parent().attr('data-dcb-id'), status:$(e.target).val()})
+          a.done (data) ->
+            alert 'success'
+          a.fail ->
+            console.log "fail"
+          return
       a.fail ->
         console.log "fail"
       return

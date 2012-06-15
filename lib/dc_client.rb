@@ -174,6 +174,12 @@ module DcClient
       is_list=self.list
       is_list.length
     end
+    def update(id,status)
+      entry=@proxy.call('dc2.deployment.installstate.get',{'_id'=>id})
+      entry['status']=status
+      update=@proxy.call('dc2.deployment.installstate.update',entry)
+      update
+    end
   end
 end
 

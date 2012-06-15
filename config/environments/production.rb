@@ -20,6 +20,8 @@ Dc2Admin::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  #config.assets.manifest = YOUR_PATH
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -60,5 +62,7 @@ Dc2Admin::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
 end

@@ -189,5 +189,18 @@ module DcClient
       update
     end
   end
+
+  class ClassTemplates < Connection
+    def list
+      templ_list=@proxy.call('dc2.configuration.classtemplates.list')
+      templ_list
+    end
+  end
+  class DefaultClasses < Connection
+    def list
+      class_list=@proxy.call('dc2.configuration.defaultclasses.list')
+      class_list
+    end
+  end
 end
 

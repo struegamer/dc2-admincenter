@@ -26,5 +26,23 @@ class DatactrlsController < ApplicationController
       format.html { render :partial => "datactrls/get_hw_interfaces" }
     end
   end
+  def get_class_templates
+    backend_id=params[:backend_id]
+    dcb=Dcbackend.first(:id=>backend_id)
+    dcb_conn=DcClient::ClassTemplates.new(dcb)
+    @templ_list={'templ_list' => dcb_conn.list()}
 
+    respond_to do |format|
+      format.json { render :json => @templ_list }
+    end
+  end
+  def get_defaultclasses
+    backend_id=params[:backend_id]
+    dcb=Dcbackend.first(:id=>backend_id)
+    dcb_conn=DcClient::DefaultClasses.new(dcb)
+    @class_list={'class_list'=>dcb_conn.list()}
+    respond_to do |format|
+      format.json { render :json => @class_list }
+    end
+  end
 end

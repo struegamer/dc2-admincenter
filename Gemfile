@@ -4,7 +4,7 @@ gem 'rails', '3.2.6'
 
 gem "mongo"
 gem "bson_ext"
-gem "mongo_mapper"
+gem "mongo_mapper", :git => 'git://github.com/jnunemaker/mongomapper.git'
 gem "mongo_session_store-rails3"
 gem 'net-ldap'
 

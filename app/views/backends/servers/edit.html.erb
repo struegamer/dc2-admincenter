@@ -9,6 +9,7 @@
       <div class="row-fluid">
         <div class="span5">
           <input type="hidden" name="backend_id" value="<%= @dcb.id %>"/>
+          <input type="hidden" name="action" value="<%= @action %>"/>
           <%= button_tag :type => "submit", :class=>"btn" do %>
             <i class="icon-ok"></i> Update
           <% end %>

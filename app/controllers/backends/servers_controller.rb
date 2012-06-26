@@ -40,6 +40,7 @@ class Backends::ServersController < ApplicationController
     @environments=dcb_conf.environment_names()
     @defclasses=dcb_conf.defaultclasses_names()
     @device_names=dcb_conn.get_mac_device_names(params[:id])
+    @action='edit'
     respond_to do |format| 
       format.html
     end

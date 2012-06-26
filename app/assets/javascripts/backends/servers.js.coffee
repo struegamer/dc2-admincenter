@@ -36,46 +36,47 @@ $(document).ready ->
   $("#hostTab a[data-toggle='tab']").bind "shown", (e) ->
     if ($(e.target).attr("href")=="#host-classes")
       list_functions "#hostclasses-list", "#hostclasses-add", "hostclasses"
-      a=$.ajax
-        url:'/datactrls/get_class_templates'
-        method:'get'
-        data:{'backend_id':$("input[name='backend_id']").val()}
-        contentType:'application/json; charset=utf-8'
-      a.done (data) ->
-        console.log data
-        for templ in data['templ_list'] 
-          $('#classtemplates select').append('<option name="'+templ['name']+'">'+templ['name']+'</option>')
-        $('#classtemplates select').change ->
-          console.log $(this).val()
-          $('#hostclasses-list tbody tr').remove()
-          defaultclasses = null
-          for templ in data['templ_list']
-            if templ['name']==$(this).val()
-              hostclasses=templ['classes']
-          b=$.ajax
-            url:'/datactrls/get_defaultclasses'
-            method:'get'
-            data:{'backend_id':$("input[name='backend_id']").val()}
-            contentType:'application/json; charset=utf-8'
-            async:false
-          b.done (data) ->
-            defaultclasses=data
-          b.fail ->
-            console.log 'default classes fail'
-          console.log defaultclasses
-          for classes in hostclasses
-            htmlstring='<tr><td><input id="host__needs_removal_" type="checkbox" value="'+classes+'" onchange="$(this).parent(\'td\').parent().remove()" name="host[[needs_removal][]"/></td><td><select id="host_hostclasses_" name="host[hostclasses][]">'
-            for defclass in defaultclasses['class_list']
-              if defclass['classname']==classes
-                htmlstring+='<option name="'+defclass['classname']+'" selected>'+defclass['classname']+'</option>'
-              else
-                htmlstring+='<option name="'+defclass['classname']+'">'+defclass['classname']+'</option>'
+      if $('input[name="action"]').val()=='edit'
+        a=$.ajax
+          url:'/datactrls/get_class_templates'
+          method:'get'
+          data:{'backend_id':$("input[name='backend_id']").val()}
+          contentType:'application/json; charset=utf-8'
+        a.done (data) ->
+          console.log data
+          for templ in data['templ_list'] 
+            $('#classtemplates select').append('<option name="'+templ['name']+'">'+templ['name']+'</option>')
+          $('#classtemplates select').change ->
+            console.log $(this).val()
+            $('#hostclasses-list tbody tr').remove()
+            defaultclasses = null
+            for templ in data['templ_list']
+              if templ['name']==$(this).val()
+                hostclasses=templ['classes']
+            b=$.ajax
+              url:'/datactrls/get_defaultclasses'
+              method:'get'
+              data:{'backend_id':$("input[name='backend_id']").val()}
+              contentType:'application/json; charset=utf-8'
+              async:false
+            b.done (data) ->
+              defaultclasses=data
+            b.fail ->
+              console.log 'default classes fail'
+            console.log defaultclasses
+            for classes in hostclasses
+              htmlstring='<tr><td><input id="host__needs_removal_" type="checkbox" value="'+classes+'" onchange="$(this).parent(\'td\').parent().remove()" name="host[[needs_removal][]"/></td><td><select id="host_hostclasses_" name="host[hostclasses][]">'
+              for defclass in defaultclasses['class_list']
+                if defclass['classname']==classes
+                  htmlstring+='<option name="'+defclass['classname']+'" selected>'+defclass['classname']+'</option>'
+                else
+                  htmlstring+='<option name="'+defclass['classname']+'">'+defclass['classname']+'</option>'
 
-            htmlstring+='</select></td></tr>'
+              htmlstring+='</select></td></tr>'
 
-            $('#hostclasses-list tbody').append(htmlstring)
-      a.fail ->
-        console "datactrls templateclasses fail"
+              $('#hostclasses-list tbody').append(htmlstring)
+        a.fail ->
+          console "datactrls templateclasses fail"
 
   $("#host-interfaces tr.collapse.in").each ->
     $(this).show()

@@ -13,6 +13,7 @@ Dc2Admin::Application.routes.draw do
     namespace :assetmgmt do
       resources :main
       resources :cabinets
+      resources :locations
     end
   end
   match "/admin" => "admin/main#index"

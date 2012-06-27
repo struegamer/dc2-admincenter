@@ -1,0 +1,25 @@
+<table cellpadding="0" cellspacing="0" class="table table-striped">
+  <thead>
+    <tr>
+      <th><input id="check_all" type="checkbox" name="check_all"/></th>
+      <th>Title</th>
+      <th>City</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locationlist.each do |location| %>
+      <tr url="<%= edit_admin_assetmgmt_location_path(location) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_assetmgmt_location_path(location) %>"/></td>
+        <td class="data-cell"><%= location.title %></td>
+        <td class="data-cell"><%= location.city %></td>
+        <td class="data-cell"><%= location.state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="locationbtn" class="btn-group pull-right">
+    <input type="button" name="btn_add" value="Add" class="btn"/>
+    <input type="button" name="btn_refresh" value="Refresh" class="btn"/>
+    <input type="button" name="btn_delete" value="Delete" class="btn"/>
+</div>

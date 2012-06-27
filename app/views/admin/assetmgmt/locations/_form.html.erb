@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="class10">
+      <%= form_for [:admin,:assetmgmt,@location], :class=>'well form-vertical' do |f| %>
+        <%= f.label :title, 'Title' %>
+        <%= f.text_field :title, :class=>'span4', :placeholder => 'Title' %>
+        <%= f.label :city, 'City' %>
+        <%= f.text_field :city, :class=>'span4',:placeholder => 'Name of the City' %>
+        <%= f.label :state, 'State' %>
+        <%= f.text_field :state, :class=>'span4',:placeholder =>'Name of the State' %>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="pull-right">
+          <%= f.submit :class=>'btn btn-primary' %> <%= link_to "Cancel", admin_assetmgmt_locations_path, :class=> 'btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

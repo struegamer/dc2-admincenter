@@ -10,6 +10,10 @@ Dc2Admin::Application.routes.draw do
     resources :kvms
     resources :interface_types
     resources :inet_types
+    namespace :assetmgmt do
+      resources :main
+      resources :cabinets
+    end
   end
   match "/admin" => "admin/main#index"
 

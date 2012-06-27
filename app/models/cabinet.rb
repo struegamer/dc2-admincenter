@@ -4,7 +4,7 @@ class Cabinet
   
   key :manufacturer, String
   key :model, String
-  key :height, Integeer
+  key :height, Integer
   key :location, String
   
 end

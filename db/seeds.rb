@@ -40,3 +40,15 @@ if InetType.all().count <= 0
                   {name:"DHCP Configuration",internal_name:"dhcp"}
   ])
 end
+
+if Cabinet.all().count <= 0
+  Cabinet.create([
+                 {"manufacturer:'Rittal','model':'DK 7000.875','height':'24',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7000875&lang=GB'},
+                 {"manufacturer:'Rittal','model':'TE 7000.882','height':'42',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7000882&lang=GB'},
+                 {"manufacturer:'Rittal','model':'DK 7000.885','height':'42',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7000885&lang=GB'},
+                 {"manufacturer:'Rittal','model':'DK 7000.892','height':'42',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7000892&lang=GB'},
+                 {"manufacturer:'Rittal','model':'DK 7000.895','height':'42',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7000895&lang=GB'},
+                 {"manufacturer:'Rittal','model':'DK 7831.433','height':'24',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7831433&lang=GB'},
+                 {"manufacturer:'Rittal','model':'DK 7831.438','height':'42',url:'http://www.rittal.com/products/ArtikelDatenblatt.asp?sub=stamm&Artnr=7831438&lang=GB'}
+  ])
+end

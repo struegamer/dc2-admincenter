@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="class10">
+      <%= form_for [:admin,:assetmgmt,@cabinet], :class=>'well form-vertical' do |f| %>
+        <%= f.label :manufacturer, 'Manufacturer' %>
+        <%= f.text_field :manufacturer, :class=>'span4', :placeholder => 'Manufacuturer Name' %>
+        <%= f.label :model, 'Model' %>
+        <%= f.text_field :model, :class=>'span4',:placeholder => 'Model Name' %>
+        <%= f.label :height, 'Height Units' %>
+        <%= f.text_field :height, :class=>'span4',:placeholder =>'Height Units' %>
+        <%= f.label :url, 'Fact Sheet URL' %>
+        <%= f.text_field :url, :class=>'span4', :placeholder =>'Fact Sheet URL' %>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="pull-right">
+          <%= f.submit :class=>'btn btn-primary' %> <%= link_to "Cancel", admin_assetmgmt_cabinets_path, :class=> 'btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

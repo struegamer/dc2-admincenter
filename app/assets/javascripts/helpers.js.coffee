@@ -1,15 +1,16 @@
 @create_buttonbar = (id,options) ->
-	$(id+" .btn").each ->
-		id_name=$(this).attr "name"
-		if id_name == "btn_add"
-			$(this).click ->
-				window.location.href=options.add_url
-		if id_name == "btn_refresh"
-			$(this).click ->
-				window.location.href=options.refresh_url
-		if id_name == "btn_delete"
-			$(this).click ->
-				eval options.delete_func()
+  $(id+" .btn").each ->
+    id_name=$(this).attr "name"
+    if id_name == "btn_add"
+      $(this).click ->
+        console.log 'add'
+        window.location.href=options.add_url
+    if id_name == "btn_refresh"
+      $(this).click ->
+        window.location.href=options.refresh_url
+    if id_name == "btn_delete"
+      $(this).click ->
+        eval options.delete_func()
 
 
 @management_buttonbar = (id) ->

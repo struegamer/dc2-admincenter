@@ -5,13 +5,22 @@
       <th>Manufacturer</th>
       <th>Model</th>
       <th>Height</th>
-      <th>Location</th>
+      <th>Fact Sheet</th>
     </tr>
   </thead>
   <tbody>
+    <% @cabinetlist.each do |cabinet| %>
+      <tr url="<%= edit_admin_assetmgmt_cabinet_path(cabinet) %>">
+        <td><input class="del_check" type="checkbox" name="check" value="<%= admin_assetmgmt_cabinet_path(cabinet) %>"/></td>
+        <td class="data-cell"><%= cabinet.manufacturer %></td>
+        <td class="data-cell"><%= cabinet.model %></td>
+        <td class="data-cell"><%= cabinet.height %></td>
+        <td><a target="_blank" href="<%= cabinet.url %>">Fact Sheet</a></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-<div id="userbtn" class="btn-group pull-right">
+<div id="cabinetbtn" class="btn-group pull-right">
     <input type="button" name="btn_add" value="Add" class="btn"/>
     <input type="button" name="btn_refresh" value="Refresh" class="btn"/>
     <input type="button" name="btn_delete" value="Delete" class="btn"/>

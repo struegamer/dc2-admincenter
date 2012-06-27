@@ -5,6 +5,6 @@ class Cabinet
   key :manufacturer, String
   key :model, String
   key :height, Integer
-  key :location, String
+  key :url, String
   
 end

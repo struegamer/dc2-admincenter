@@ -14,6 +14,7 @@ Dc2Admin::Application.routes.draw do
       resources :main
       resources :cabinets
       resources :locations
+      resources :dc_modules
     end
   end
   match "/admin" => "admin/main#index"

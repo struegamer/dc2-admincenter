@@ -7,4 +7,9 @@ class Location
   key :state, String
   timestamps!
 
+  def location_string
+    "#{title}, #{city}, #{state}"
+  end
+
+
 end

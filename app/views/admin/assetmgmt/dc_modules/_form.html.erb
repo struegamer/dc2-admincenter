@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="class10">
+      <%= form_for [:admin,:assetmgmt,@dcmodule], :class=>'well form-vertical' do |f| %>
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, :class=>'span4', :placeholder => 'Name' %>
+        <%= f.label :floor, 'Floor' %>
+        <%= f.text_field :floor, :class=>'span4',:placeholder => 'Floor' %>
+        <%= f.label :room_no, 'Room Number' %>
+        <%= f.text_field :room_no, :class=>'span4',:placeholder =>'Room Number' %>
+        <%= f.label :racks_max, 'Max No. of Cabinets' %>
+        <%= f.text_field :racks_max, :class=>'span4',:placeholder => 'No. of Cabinets' %>
+        <%= f.label :rows_max, 'Max No. of Rows' %>
+        <%= f.text_field :rows_max, :class=>'span4', :placeholder => 'No. of Rows' %>
+        <%= f.label :location, 'Location' %>
+        <%= f.collection_select :location, Location.all,:id,:location_string %>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="pull-right">
+          <%= f.submit :class=>'btn btn-primary' %> <%= link_to "Cancel", admin_assetmgmt_dc_modules_path, :class=> 'btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

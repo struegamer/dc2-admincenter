@@ -78,6 +78,7 @@ $(document).ready ->
           "iDisplayLength": 25
           'fnCreatedRow':(nRow,aData,iDataIndex) ->
             $(nRow).children('td').children('select.installstatus').each ->
+              cell=$(this).parent()
               $(this).change (e) ->
                 a=$.ajax
                   url:$(e.target).parent().parent().attr('data-show-url')+'.json'
@@ -85,9 +86,13 @@ $(document).ready ->
                   type:'PUT'
                   dataType:'json'
                   data:JSON.stringify({backend_id: $(e.target).parent().attr('data-dcb-id'), status:$(e.target).val()})
+                a.done ->
+                  bgColor=cell.css('background-color')
+                  cell.animate({backgroundColor:'#ff9900'},500).animate({backgroundColor:bgColor},500)
                 a.fail ->
                   console.log "fail"
                 return
+
       a.fail ->
         console.log "fail"
       return

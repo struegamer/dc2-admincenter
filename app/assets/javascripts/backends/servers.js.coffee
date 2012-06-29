@@ -15,8 +15,9 @@ list_functions = (id,button_add_id,type_of) ->
       tr_elem=$("<tr><input type='hidden' name='ribs[][_id]' value='none'/><td></td><td>"+$(select_elem).html()+"</td><td><input type='text' name='ribs[][remote_ip]' value''/></td></tr>")
 
     if (type_of=="hostclasses")
-      tr_elem=$("div#hostclasses-names-list table tr")
-      console.log tr_elem
+      select_elem=$("div#hostclasses-names-list table TBODY")
+      console.log select_elem.html()
+      tr_elem=select_elem.html()
 
     $(id+" TBODY").append(tr_elem)
 
@@ -44,6 +45,8 @@ $(document).ready ->
           contentType:'application/json; charset=utf-8'
         a.done (data) ->
           console.log data
+          $('#classtemplates select').append('<option selected>Select...</option>')
+
           for templ in data['templ_list'] 
             $('#classtemplates select').append('<option name="'+templ['name']+'">'+templ['name']+'</option>')
           $('#classtemplates select').change ->

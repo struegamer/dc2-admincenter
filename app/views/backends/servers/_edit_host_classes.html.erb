@@ -14,7 +14,7 @@
             <input type="hidden" name="host[hostclasses][]" />
             <% @server_info["server"]["host"]["hostclasses"].each do |hcl| %>
               <tr>
-                <td><%= check_box_tag "host[[needs_removal][]",hcl,false, :onchange=>"$(this).parent('td').parent().remove()" %>
+                <td><%= check_box_tag "host[[needs_removal][]",hcl,false, :onchange=>"$(this).parent('td').parent().remove()" %></td>
                 <td><%= select_tag "host[hostclasses][]",options_for_select(@defclasses,:selected=>hcl) %></td>
               </tr>
             <% end %>

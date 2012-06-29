@@ -5,6 +5,7 @@ class Location
   key :title, String
   key :city, String
   key :state, String
+  many :dc_module
   timestamps!
 
   def location_string

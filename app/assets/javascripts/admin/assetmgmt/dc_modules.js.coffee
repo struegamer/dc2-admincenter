@@ -17,7 +17,7 @@ $(document).ready ->
     delete_func:delete_am_modules
 
   $('#modulelist TABLE TBODY TR').each ->
-    $(this).children('TD.data-cell').clicl ->
+    $(this).children('TD.data-cell').click ->
       window.location.href=$(this).parent().attr 'url'
 
 delete_am_modules = () ->

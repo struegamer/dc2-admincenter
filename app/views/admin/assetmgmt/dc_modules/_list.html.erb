@@ -6,7 +6,6 @@
       <th>Name</th>
       <th>Floor</th>
       <th>Room No.</th>
-      <th>Dimension</th>
       <th>Cabinets Max</th>
       <th>Rows Max</th>
     </tr>
@@ -15,11 +14,10 @@
     <% @modulelist.each do |dcmodule| %>
       <tr url="<%= edit_admin_assetmgmt_dc_module_path(dcmodule) %>">
         <td><input class="del_check" type="checkbox" name="check" value="<%= admin_assetmgmt_dc_module_path(dcmodule) %>"/></td>
-        <td class="data-cell"><%= dcmodule.location %></td>
+        <td class="data-cell"><%= dcmodule.location.title %></td>
         <td class="data-cell"><%= dcmodule.name %></td>
         <td class="data-cell"><%= dcmodule.floor %></td>
         <td class="data-cell"><%= dcmodule.room_no %></td>
-        <td class="data-cell"><%= dcmodule.dimension %></td>
         <td class="data-cell"><%= dcmodule.racks_max %></td>
         <td class="data-cell"><%= dcmodule.rows_max %></td>
       </tr>

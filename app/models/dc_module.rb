@@ -5,9 +5,8 @@ class DcModule
   key :name, String
   key :floor, String
   key :room_no, String
-  key :dimension, String
   key :racks_max, Integer
   key :rows_max, Integer
-  one :location
+  belongs_to :location
   timestamps!
 end
